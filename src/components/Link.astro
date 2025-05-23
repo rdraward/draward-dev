@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import arrow from "../assets/arrow.svg";
+const { href, name } = Astro.props;
+---
+
+<a class="text-2xl mx-auto text-center" href={href} target="_blank">
+    <button>
+        <span class="flex items-center group">
+            <Image
+                src={arrow}
+                alt="left facing arrow used for emphasis on resume link"
+                class="h-5 rotate-180 invisible group-hover:visible"
+            />
+            {name}
+            <Image
+                src={arrow}
+                alt="right facing arrow used for emphasis on resume link"
+                class="h-5 invisible group-hover:visible"
+            />
+        </span>
+    </button>
+</a>

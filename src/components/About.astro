@@ -1,0 +1,39 @@
+---
+import Link from "./Link.astro";
+---
+
+<div class="h-screen flex flex-col">
+    <main class="flex flex-col flex-auto pt-16">
+        <div class="dinosaur mx-auto grow-0"></div>
+        <div class="flex flex-col justify-center grow">
+            <h1 class="text-6xl text-center">RILEY DRAWARD</h1>
+            <h1 class="mt-4 text-2xl text-center">
+                Software Developer & Advocate
+            </h1>
+            <div class="mt-8 flex flex-col justify-center">
+                <!-- <Link href={resume} name="Resume" hasArrows /> -->
+                <br />
+                <Link href="https://github.com/rdraward" name="GitHub" />
+                <Link href="https://twitter.com/rdraward" name="Twitter" />
+                <Link
+                    href="https://www.linkedin.com/in/riley-draward"
+                    name="LinkedIn"
+                />
+                <Link
+                    href="https://bsky.app/profile/draward.bsky.social"
+                    name="Bluesky"
+                />
+            </div>
+        </div>
+    </main>
+    <footer class="shrink-0 pb-10 text-center">
+        <div class="space-invader mx-auto"></div>
+        <p>
+            Built with <a
+                href="https://gadget.dev"
+                target="_blank"
+                class="underline">gadget.dev</a
+            >
+        </p>
+    </footer>
+</div>

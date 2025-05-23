@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+    --space-invader-color: #a3e635;
+    --dinosaur-color: #d2042d;
+}
+
+.space-invader {
+    box-shadow:
+        0 0 0 1rem var(--space-invader-color),
+        0 1rem 0 1rem var(--space-invader-color),
+        -2.5rem 1.5rem 0 0.5rem var(--space-invader-color),
+        2.5rem 1.5rem 0 0.5rem var(--space-invader-color),
+        -3rem -3rem 0 0 var(--space-invader-color),
+        3rem -3rem 0 0 var(--space-invader-color),
+        -2rem -2rem 0 0 var(--space-invader-color),
+        2rem -2rem 0 0 var(--space-invader-color),
+        -3rem -1rem 0 0 var(--space-invader-color),
+        -2rem -1rem 0 0 var(--space-invader-color),
+        2rem -1rem 0 0 var(--space-invader-color),
+        3rem -1rem 0 0 var(--space-invader-color),
+        -4rem 0 0 0 var(--space-invader-color),
+        -3rem 0 0 0 var(--space-invader-color),
+        3rem 0 0 0 var(--space-invader-color),
+        4rem 0 0 0 var(--space-invader-color),
+        -5rem 1rem 0 0 var(--space-invader-color),
+        -4rem 1rem 0 0 var(--space-invader-color),
+        4rem 1rem 0 0 var(--space-invader-color),
+        5rem 1rem 0 0 var(--space-invader-color),
+        -5rem 2rem 0 0 var(--space-invader-color),
+        5rem 2rem 0 0 var(--space-invader-color),
+        -5rem 3rem 0 0 var(--space-invader-color),
+        -3rem 3rem 0 0 var(--space-invader-color),
+        3rem 3rem 0 0 var(--space-invader-color),
+        5rem 3rem 0 0 var(--space-invader-color),
+        -2rem 4rem 0 0 var(--space-invader-color),
+        -1rem 4rem 0 0 var(--space-invader-color),
+        1rem 4rem 0 0 var(--space-invader-color),
+        2rem 4rem 0 0 var(--space-invader-color);
+    background: var(--space-invader-color);
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    margin: 3rem 5rem 4rem 5rem;
+
+    @media (min-width: 1024px) and (min-height: 700px) {
+        position: relative;
+        animation-name: invader;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(10, end);
+        animation-direction: reverse;
+    }
+}
+
+.dinosaur {
+    box-shadow:
+        4rem -2rem 0 0.001rem white,
+        -8.5rem -2.5rem 0 0 var(--dinosaur-color),
+        -8.5rem -2rem 0 0 var(--dinosaur-color),
+        -8rem -2rem 0 0 var(--dinosaur-color),
+        -8rem -1.5rem 0 0 var(--dinosaur-color),
+        -7.5rem -1.5rem 0 0 var(--dinosaur-color),
+        -7.5rem -1rem 0 0 var(--dinosaur-color),
+        -6.75rem -0.75rem 0 0.25rem var(--dinosaur-color),
+        -5.75rem -0.25rem 0 0.25rem var(--dinosaur-color),
+        -4.75rem 0.25rem 0 0.25rem var(--dinosaur-color),
+        -3.75rem 0.25rem 0 0.25rem var(--dinosaur-color),
+        -2.75rem 0.25rem 0 0.25rem var(--dinosaur-color),
+        -1.5rem 0 0 0.5rem var(--dinosaur-color),
+        -0.75rem -1rem 0 0 var(--dinosaur-color),
+        0 0 0 1em var(--dinosaur-color),
+        -1.75rem 0.75rem 0 0.25rem var(--dinosaur-color),
+        -0.75rem 1.25rem 0 0.25rem var(--dinosaur-color),
+        0.25rem 1.25rem 0 0.25rem var(--dinosaur-color),
+        1.75rem 0.75rem 0 0.25rem var(--dinosaur-color),
+        1.75rem -0.25rem 0 0.25rem var(--dinosaur-color),
+        -1.5rem 1.5rem 0 0 var(--dinosaur-color),
+        -1.5rem 2rem 0 0 var(--dinosaur-color),
+        -1.5rem 2.5rem 0 0 var(--dinosaur-color),
+        -2rem 2.5rem 0 0 var(--dinosaur-color),
+        -2rem 3rem 0 0 var(--dinosaur-color),
+        -2rem 3.5rem 0 0 var(--dinosaur-color),
+        -1.5rem 3.5rem 0 0 var(--dinosaur-color),
+        -1rem 3.5rem 0 0 var(--dinosaur-color),
+        0.5rem 2rem 0 0 var(--dinosaur-color),
+        0.5rem 2.5rem 0 0 var(--dinosaur-color),
+        0.5rem 3rem 0 0 var(--dinosaur-color),
+        1rem 3rem 0 0 var(--dinosaur-color),
+        1.5rem 3rem 0 0 var(--dinosaur-color),
+        2rem 1.5rem 0 0 var(--dinosaur-color),
+        2.5rem 1.5rem 0 0 var(--dinosaur-color),
+        3rem 1.5rem 0 0 var(--dinosaur-color),
+        2.5rem 0.5rem 0 0 var(--dinosaur-color),
+        3rem 0.5rem 0 0 var(--dinosaur-color),
+        3.5rem 0.5rem 0 0 var(--dinosaur-color),
+        2rem -1rem 0 0 var(--dinosaur-color),
+        2.5rem -1rem 0 0 var(--dinosaur-color),
+        2.5rem -1.5rem 0 0 var(--dinosaur-color),
+        3.5rem -2rem 0 0.5rem var(--dinosaur-color),
+        5rem -2rem 0 0.5rem var(--dinosaur-color);
+    background: var(--dinosaur-color);
+
+    width: 0.5rem;
+    height: 0.5rem;
+    overflow: hidden;
+    margin: 2.5rem 5.5rem 3.5rem 8.5rem;
+
+    @media (min-width: 1024px) and (min-height: 700px) {
+        position: relative;
+        animation-name: dino;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(10, end);
+        animation-direction: reverse;
+    }
+}
+
+@keyframes dino {
+    0% {
+        top: 0;
+        left: -40%;
+    }
+
+    25% {
+        top: 0;
+        left: 40%;
+    }
+
+    50% {
+        top: 100%;
+        left: 40%;
+    }
+
+    75% {
+        top: 100%;
+        left: -40%;
+    }
+
+    100% {
+        top: 0;
+        left: -40%;
+    }
+}
+
+@keyframes invader {
+    0% {
+        top: 0;
+        left: 40%;
+    }
+
+    25% {
+        top: 0;
+        left: -40%;
+    }
+
+    50% {
+        top: -75vh;
+        left: -40%;
+    }
+
+    75% {
+        top: -75vh;
+        left: 40%;
+    }
+
+    100% {
+        top: 0;
+        left: 40%;
+    }
+}
+
+@theme {
+    --font-sans: "Courier New", "monospace";
+}
