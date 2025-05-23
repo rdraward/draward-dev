@@ -1,5 +1,9 @@
 ---
 import Link from "./Link.astro";
+import GitHubIcon from "../assets/icons/github.svg";
+import TwitterIcon from "../assets/icons/twitter.svg";
+import LinkedInIcon from "../assets/icons/linkedin.svg";
+import BlueskyIcon from "../assets/icons/bluesky.svg";
 ---
 
 <div class="h-screen flex flex-col">
@@ -10,30 +14,25 @@ import Link from "./Link.astro";
             <h1 class="mt-4 text-2xl text-center">
                 Software Developer & Advocate
             </h1>
-            <div class="mt-8 flex flex-col justify-center">
-                <!-- <Link href={resume} name="Resume" hasArrows /> -->
-                <br />
-                <Link href="https://github.com/rdraward" name="GitHub" />
-                <Link href="https://twitter.com/rdraward" name="Twitter" />
-                <Link
-                    href="https://www.linkedin.com/in/riley-draward"
-                    name="LinkedIn"
-                />
-                <Link
-                    href="https://bsky.app/profile/draward.bsky.social"
-                    name="Bluesky"
-                />
-            </div>
         </div>
     </main>
     <footer class="shrink-0 pb-10 text-center">
         <div class="space-invader mx-auto"></div>
-        <p>
-            Built with <a
-                href="https://gadget.dev"
-                target="_blank"
-                class="underline">gadget.dev</a
-            >
-        </p>
+        <div class="mt-8 flex justify-center items-center">
+            <div class="flex flex-row gap-8">
+                <Link href="https://github.com/rdraward">
+                    <GitHubIcon width={24} />
+                </Link>
+                <Link href="https://twitter.com/rdraward">
+                    <TwitterIcon width={24} />
+                </Link>
+                <Link href="https://www.linkedin.com/in/riley-draward">
+                    <LinkedInIcon width={24} />
+                </Link>
+                <Link href="https://bsky.app/profile/draward.bsky.social">
+                    <BlueskyIcon width={24} />
+                </Link>
+            </div>
+        </div>
     </footer>
 </div>
