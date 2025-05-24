@@ -66,11 +66,12 @@ const jobs = [
           }`}></div>
 
           <!-- Job card -->
-          <a href={job.url} target="_blank" rel="noopener noreferrer" class="mt-4 block p-4 text-center hover:bg-gray-800 rounded-lg transition-colors">
+          <a href={job.url} target="_blank" rel="noopener noreferrer" 
+             class="mt-4 block p-4 text-center hover:bg-gray-800 hover:border-white/20 border border-transparent rounded-lg transition-all duration-200">
             <Image
               src={job.logo}
               alt={`${job.company} logo`}
-              class="w-10 h-10 rounded-full mx-auto p-1 mb-3 bg-white"
+              class="w-12 h-12 rounded-lg mx-auto p-2 mb-3 bg-white"
               loading="eager"
             />
             <h3 class="text-sm font-semibold text-white mb-1">{job.title}</h3>
@@ -97,12 +98,13 @@ const jobs = [
           }`}></div>
 
           <!-- Job card -->
-          <a href={job.url} target="_blank" rel="noopener noreferrer" class="ml-12 p-3 flex-1 block hover:bg-gray-800 rounded-lg transition-colors">
+          <a href={job.url} target="_blank" rel="noopener noreferrer" 
+             class="ml-12 p-3 flex-1 block hover:bg-gray-800 hover:border-white/20 border border-transparent rounded-lg transition-all duration-200">
             <div class="flex items-center">
               <Image
                 src={job.logo}
                 alt={`${job.company} logo`}
-                class="w-8 h-8 rounded mr-3 bg-white"
+                class="w-8 h-8 rounded-lg mr-3 bg-white p-1"
               />
               <div class="flex-1">
                 <h3 class="text-sm font-semibold text-white">{job.title}</h3>
