@@ -51,6 +51,11 @@
         animation-timing-function: steps(10, end);
         animation-direction: reverse;
     }
+
+    @media (max-width: 1024px) {
+        margin-left: 50%;
+        margin-top: 3rem;
+    }
 }
 
 .dinosaur {
@@ -113,6 +118,11 @@
         animation-iteration-count: infinite;
         animation-timing-function: steps(10, end);
         animation-direction: reverse;
+    }
+
+    @media (max-width: 1024px) {
+        margin-left: 50%;
+        margin-top: 5rem;
     }
 }
 
