@@ -41,6 +41,36 @@
     border: 12px solid transparent;
 }
 
+@keyframes rotate-gradient {
+  0% {
+    background: linear-gradient(45deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  12.5% {
+    background: linear-gradient(90deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  25% {
+    background: linear-gradient(135deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  37.5% {
+    background: linear-gradient(180deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  50% {
+    background: linear-gradient(225deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  62.5% {
+    background: linear-gradient(270deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  75% {
+    background: linear-gradient(315deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  87.5% {
+    background: linear-gradient(360deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+  100% {
+    background: linear-gradient(45deg, var(--dinosaur-color), var(--space-invader-color));
+  }
+}
+
 .pixel-corners::after {
   content: "";
   position: absolute;
@@ -116,14 +146,14 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(45deg, var(--dinosaur-color), var(--space-invader-color));
   display: block;
   pointer-events: none;
   margin: -12px;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 
 .pixel-corners:hover::after {
   opacity: 1;
+  animation: rotate-gradient 5s linear infinite;
 }
