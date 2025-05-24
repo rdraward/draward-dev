@@ -53,8 +53,7 @@
     }
 
     @media (max-width: 1024px) {
-        margin-left: 50%;
-        margin-top: 3rem;
+        margin: 5rem auto;
     }
 }
 
