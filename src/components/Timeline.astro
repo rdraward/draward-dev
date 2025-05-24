@@ -62,7 +62,7 @@ const jobs = [
           <!-- Timeline dot with conditional styling -->
           <div class={`w-4 h-4 border-2 z-10 ${
             index === jobs.length - 1 
-              ? "bg-red-500 border-red-300"
+              ? "bg-[var(--space-invader-color)] border-lime-100"
               : "bg-white border-gray-500"
           }`}></div>
 
@@ -94,7 +94,7 @@ const jobs = [
           <!-- Timeline dot with conditional styling -->
           <div class={`absolute left-2 w-4 h-4 border-2 ${
             index === 0  // First item in reversed list is the latest
-              ? "bg-red-500 border-red-300" 
+              ? "bg-[var(--space-invader-color)] border-lime-100"
               : "bg-white border-gray-500"
           }`}></div>
 
