@@ -1,0 +1,99 @@
+---
+const jobs = [
+  {
+    title: "Staff Software Developer",
+    company: "IBM",
+    period: "Jul 2014 - Jul 2017",
+    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=FT",
+    url: "https://www.ibm.com"
+  },
+  {
+    title: "Sr. Software Developer",
+    company: "Raven Telemetry",
+    period: "Jul 2017 - Mar 2019",
+    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=FT",
+    url: "https://www.raventelemetry.com"
+  },
+  {
+    title: "Sr. Full Stack Developer",
+    company: "MindBridge",
+    period: "Apr 2019 - Apr 2022",
+    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=FT",
+    url: "https://www.mindbridge.ai"
+  },
+  {
+    title: "Developer Advocate",
+    company: "Gadget",
+    period: "May 2022 - Jan 2025",
+    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=PC",
+    url: "https://gadget.dev"
+  },
+  {
+    title: "Sr. DevRel Engineer",
+    company: "Trunk",
+    period: "Jan 2025 - Present",
+    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=CC",
+    url: "https://trunk.io"
+  },
+];
+---
+
+<div class="max-w-4xl mx-auto pt-16">
+  <!-- Desktop: Horizontal Timeline -->
+  <div class="hidden md:block relative">
+    <!-- Horizontal line -->
+    <div class="absolute top-6 left-0 right-0 h-0.5 bg-gray-500"></div>
+
+    <div class="grid grid-cols-5 gap-8">
+      {jobs.map((job, index) => (
+        <div class="relative flex flex-col items-center">
+          <!-- Timeline dot -->
+          <div class="w-4 h-4 bg-white rounded-full border-2 border-gray-500 mb-4 z-10"></div>
+
+          <!-- Job card -->
+          <a href={job.url} target="_blank" rel="noopener noreferrer" class="block p-4 text-center hover:bg-gray-800 rounded-lg transition-colors">
+            <img
+              src={job.logo}
+              alt={`${job.company} logo`}
+              class="w-10 h-10 rounded mx-auto mb-3 bg-white"
+            />
+            <h3 class="text-sm font-semibold text-white mb-1">{job.title}</h3>
+            <p class="text-xs text-blue-300 mb-2 hover:text-blue-200">{job.company}</p>
+            <span class="text-xs text-gray-300">{job.period}</span>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Mobile: Vertical Timeline -->
+  <div class="md:hidden relative">
+    <!-- Vertical line -->
+    <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-500"></div>
+
+    <div class="space-y-4">
+      {jobs.reverse().map((job) => (
+        <div class="relative flex items-center">
+          <!-- Timeline dot -->
+          <div class="absolute left-2 w-4 h-4 bg-white rounded-full border-2 border-gray-500"></div>
+
+          <!-- Job card -->
+          <a href={job.url} target="_blank" rel="noopener noreferrer" class="ml-12 p-3 flex-1 block hover:bg-gray-800 rounded-lg transition-colors">
+            <div class="flex items-center">
+              <img
+                src={job.logo}
+                alt={`${job.company} logo`}
+                class="w-8 h-8 rounded mr-3 bg-white"
+              />
+              <div class="flex-1">
+                <h3 class="text-sm font-semibold text-white">{job.title}</h3>
+                <p class="text-xs text-blue-300 hover:text-blue-200">{job.company}</p>
+              </div>
+              <span class="text-xs text-gray-300">{job.period}</span>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

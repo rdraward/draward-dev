@@ -1,24 +1,18 @@
 ---
 import Link from "./Link.astro";
+import Timeline from "./Timeline.astro";
 import GitHubIcon from "../assets/icons/github.svg";
 import TwitterIcon from "../assets/icons/twitter.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
 import BlueskyIcon from "../assets/icons/bluesky.svg";
 ---
 
-<div class="h-screen flex flex-col">
-    <main class="flex flex-col flex-auto pt-16">
-        <div class="dinosaur mx-auto grow-0"></div>
-        <div class="flex flex-col justify-center grow">
-            <h1 class="text-6xl text-center">RILEY DRAWARD</h1>
-            <h1 class="mt-4 text-2xl text-center">
-                Software Developer & Advocate
-            </h1>
-        </div>
-    </main>
-    <footer class="shrink-0 pb-10 text-center">
-        <div class="space-invader mx-auto"></div>
-        <div class="mt-8 flex justify-center items-center">
+<main class="min-h-screen flex flex-col flex-auto">
+    <div class="dinosaur mx-auto grow-0"></div>
+    <div class="flex flex-col justify-center grow">
+        <h1 class="text-6xl text-center">RILEY DRAWARD</h1>
+        <p class="mt-2 text-2xl text-center">Software Developer & Advocate</p>
+        <div class="mt-2 flex justify-center items-center">
             <div class="flex flex-row gap-8">
                 <Link href="https://github.com/rdraward">
                     <GitHubIcon width={24} />
@@ -34,5 +28,7 @@ import BlueskyIcon from "../assets/icons/bluesky.svg";
                 </Link>
             </div>
         </div>
-    </footer>
-</div>
+        <Timeline />
+    </div>
+    <div class="space-invader mx-auto"></div>
+</main>
