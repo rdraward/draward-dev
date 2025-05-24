@@ -1,0 +1,14 @@
+---
+interface Props {
+  isLatest: boolean;
+  isMobile?: boolean;
+}
+
+const { isLatest, isMobile = false } = Astro.props;
+---
+
+<div class:list={[
+  "w-4 h-4 border-2",
+  isLatest ? "bg-[var(--space-invader-color)] border-lime-100" : "bg-white border-gray-500",
+  isMobile ? "absolute left-2" : "z-10"
+]}></div>

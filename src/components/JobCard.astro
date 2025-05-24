@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+interface Props {
+  title: string;
+  company: string;
+  logo: ImageMetadata;
+  url: string;
+  isMobile?: boolean;
+}
+
+const { title, company, logo, url, isMobile = false } = Astro.props;
+---
+
+<a href={url} target="_blank" rel="noopener noreferrer" 
+   class:list={[
+     "block hover:bg-gray-800 border border-transparent transition-all pixel-corners",
+     isMobile ? "ml-12 p-3 flex-1" : "mt-4 p-2 text-center"
+   ]}>
+  {isMobile ? (
+    <div class="flex items-center">
+      <Image
+        src={logo}
+        alt={`${company} logo`}
+        class="w-8 h-8 rounded-lg mr-3 bg-white p-1"
+      />
+      <div class="flex-1">
+        <h3 class="text-sm font-semibold text-white">{title}</h3>
+        <p class="text-xs text-grey-300">{company}</p>
+      </div>
+    </div>
+  ) : (
+    <>
+      <Image
+        src={logo}
+        alt={`${company} logo`}
+        class="w-16 h-16 mx-auto mb-3 p-1 bg-white pixel-corners"
+        loading="eager"
+      />
+      <h3 class="text-sm font-semibold text-white mb-1">{title}</h3>
+      <p class="text-xs text-grey-300 mb-2">{company}</p>
+    </>
+  )}
+</a>
