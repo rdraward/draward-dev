@@ -60,9 +60,9 @@ const jobs = [
           <span class="text-xs text-gray-400 mb-4">{job.startDate}</span>
           
           <!-- Timeline dot with conditional styling -->
-          <div class={`w-4 h-4 rounded-full border-2 z-10 ${
+          <div class={`w-4 h-4 border-2 z-10 ${
             index === jobs.length - 1 
-              ? "bg-blue-500 border-blue-300" 
+              ? "bg-red-500 border-red-300"
               : "bg-white border-gray-500"
           }`}></div>
 
@@ -72,11 +72,11 @@ const jobs = [
             <Image
               src={job.logo}
               alt={`${job.company} logo`}
-              class="w-12 h-12 rounded-lg mx-auto p-2 mb-3 bg-white"
+              class="w-16 h-16 mx-auto mb-3 bg-white pixel-corners"
               loading="eager"
             />
             <h3 class="text-sm font-semibold text-white mb-1">{job.title}</h3>
-            <p class="text-xs text-blue-300 mb-2 hover:text-blue-200">{job.company}</p>
+            <p class="text-xs text-grey-300 mb-2">{job.company}</p>
           </a>
         </div>
       ))}
@@ -92,9 +92,9 @@ const jobs = [
       {jobs.reverse().map((job, index) => (
         <div class="relative flex items-center">
           <!-- Timeline dot with conditional styling -->
-          <div class={`absolute left-2 w-4 h-4 rounded-full border-2 ${
+          <div class={`absolute left-2 w-4 h-4 border-2 ${
             index === 0  // First item in reversed list is the latest
-              ? "bg-blue-500 border-blue-300" 
+              ? "bg-red-500 border-red-300" 
               : "bg-white border-gray-500"
           }`}></div>
 
@@ -109,7 +109,7 @@ const jobs = [
               />
               <div class="flex-1">
                 <h3 class="text-sm font-semibold text-white">{job.title}</h3>
-                <p class="text-xs text-blue-300 hover:text-blue-200">{job.company}</p>
+                <p class="text-xs text-grey-300">{job.company}</p>
               </div>
             </div>
           </a>
