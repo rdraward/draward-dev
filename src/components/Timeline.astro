@@ -1,38 +1,46 @@
 ---
+import { Image } from 'astro:assets';
+
+import IBMLogo from "../assets/logos/ibm.svg";
+import RavenLogo from "../assets/logos/raven.svg";
+import MindBridgeLogo from "../assets/logos/mindbridge.png";
+import GadgetLogo from "../assets/logos/gadget.png";
+import TrunkLogo from "../assets/logos/trunk.png";
+
 const jobs = [
   {
     title: "Staff Software Developer",
     company: "IBM",
     period: "Jul 2014 - Jul 2017",
-    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=FT",
+    logo: IBMLogo,
     url: "https://www.ibm.com"
   },
   {
     title: "Sr. Software Developer",
     company: "Raven Telemetry",
     period: "Jul 2017 - Mar 2019",
-    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=FT",
+    logo: RavenLogo,
     url: "https://www.raventelemetry.com"
   },
   {
     title: "Sr. Full Stack Developer",
     company: "MindBridge",
     period: "Apr 2019 - Apr 2022",
-    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=FT",
+    logo: MindBridgeLogo,
     url: "https://www.mindbridge.ai"
   },
   {
     title: "Developer Advocate",
     company: "Gadget",
     period: "May 2022 - Jan 2025",
-    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=PC",
+    logo: GadgetLogo,
     url: "https://gadget.dev"
   },
   {
     title: "Sr. DevRel Engineer",
     company: "Trunk",
     period: "Jan 2025 - Present",
-    logo: "https://via.placeholder.com/40x40/ffffff/000000?text=CC",
+    logo: TrunkLogo,
     url: "https://trunk.io"
   },
 ];
@@ -52,10 +60,10 @@ const jobs = [
 
           <!-- Job card -->
           <a href={job.url} target="_blank" rel="noopener noreferrer" class="block p-4 text-center hover:bg-gray-800 rounded-lg transition-colors">
-            <img
+            <Image
               src={job.logo}
               alt={`${job.company} logo`}
-              class="w-10 h-10 rounded mx-auto mb-3 bg-white"
+              class="w-10 h-10 rounded-full mx-auto p-1 mb-3 bg-white"
             />
             <h3 class="text-sm font-semibold text-white mb-1">{job.title}</h3>
             <p class="text-xs text-blue-300 mb-2 hover:text-blue-200">{job.company}</p>
