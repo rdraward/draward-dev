@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import '../styles/pixel-corners.css';
 
 import IBMLogo from "../assets/logos/ibm.svg";
 import RavenLogo from "../assets/logos/raven.svg";
@@ -52,7 +53,7 @@ const jobs = [
     <!-- Horizontal line -->
     <div class="absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gray-500"></div>
 
-    <div class="grid grid-cols-5 gap-8">
+    <div class="grid grid-cols-5 gap-4">
       {jobs.map((job, index) => (
         <div class="relative flex flex-col items-center">
           <!-- Date on timeline -->
@@ -67,7 +68,7 @@ const jobs = [
 
           <!-- Job card -->
           <a href={job.url} target="_blank" rel="noopener noreferrer" 
-             class="mt-4 block p-4 text-center hover:bg-gray-800 hover:border-white/20 border border-transparent rounded-lg transition-all duration-200">
+             class="mt-4 block p-2 text-center hover:bg-gray-800 border border-transparent rounded-none transition-all pixel-corners">
             <Image
               src={job.logo}
               alt={`${job.company} logo`}
@@ -97,9 +98,9 @@ const jobs = [
               : "bg-white border-gray-500"
           }`}></div>
 
-          <!-- Job card -->
+          <!-- Job card (mobile) -->
           <a href={job.url} target="_blank" rel="noopener noreferrer" 
-             class="ml-12 p-3 flex-1 block hover:bg-gray-800 hover:border-white/20 border border-transparent rounded-lg transition-all duration-200">
+             class="ml-12 p-3 flex-1 block hover:bg-gray-800 border border-transparent rounded-none transition-all pixel-corners">
             <div class="flex items-center">
               <Image
                 src={job.logo}
@@ -110,7 +111,6 @@ const jobs = [
                 <h3 class="text-sm font-semibold text-white">{job.title}</h3>
                 <p class="text-xs text-blue-300 hover:text-blue-200">{job.company}</p>
               </div>
-              <span class="text-xs text-gray-300">{job.period}</span>
             </div>
           </a>
         </div>
