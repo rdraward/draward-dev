@@ -1,7 +1,6 @@
 ---
-import '../styles/pixel-corners.css';
-import JobCard from './JobCard.astro';
-import TimelineDot from './TimelineDot.astro';
+import JobCard from "./JobCard.astro";
+import TimelineDot from "./TimelineDot.astro";
 
 import IBMLogo from "../assets/logos/ibm.svg";
 import RavenLogo from "../assets/logos/raven.svg";
@@ -10,72 +9,79 @@ import GadgetLogo from "../assets/logos/gadget.png";
 import TrunkLogo from "../assets/logos/trunk.png";
 
 const jobs = [
-  {
-    title: "Staff Software Developer",
-    company: "IBM",
-    startDate: "2014/07",
-    logo: IBMLogo,
-    url: "https://www.ibm.com"
-  },
-  {
-    title: "Sr. Software Developer",
-    company: "Raven Telemetry",
-    startDate: "2017/07",
-    logo: RavenLogo,
-    url: "https://www.raventelemetry.com"
-  },
-  {
-    title: "Sr. Full Stack Developer",
-    company: "MindBridge",
-    startDate: "2019/04",
-    logo: MindBridgeLogo,
-    url: "https://www.mindbridge.ai"
-  },
-  {
-    title: "Developer Advocate",
-    company: "Gadget",
-    startDate: "2022/05",
-    logo: GadgetLogo,
-    url: "https://gadget.dev"
-  },
-  {
-    title: "Sr. DevRel Engineer",
-    company: "Trunk",
-    startDate: "2025/01",
-    logo: TrunkLogo,
-    url: "https://trunk.io"
-  },
+    {
+        title: "Staff Software Developer",
+        company: "IBM",
+        startDate: "2014/07",
+        logo: IBMLogo,
+        url: "https://www.ibm.com",
+    },
+    {
+        title: "Sr. Software Developer",
+        company: "Raven Telemetry",
+        startDate: "2017/07",
+        logo: RavenLogo,
+        url: "https://www.raventelemetry.com",
+    },
+    {
+        title: "Sr. Full Stack Developer",
+        company: "MindBridge",
+        startDate: "2019/04",
+        logo: MindBridgeLogo,
+        url: "https://www.mindbridge.ai",
+    },
+    {
+        title: "Developer Advocate",
+        company: "Gadget",
+        startDate: "2022/05",
+        logo: GadgetLogo,
+        url: "https://gadget.dev",
+    },
+    {
+        title: "Sr. DevRel Engineer",
+        company: "Trunk",
+        startDate: "2025/01",
+        logo: TrunkLogo,
+        url: "https://trunk.io",
+    },
 ];
 ---
 
 <div class="max-w-4xl mx-auto pt-8 md:pt-16">
-  <!-- Desktop: Horizontal Timeline -->
-  <div class="hidden md:block relative">
-    <!-- Horizontal line -->
-    <div class="absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gray-500"></div>
-
-    <div class="grid grid-cols-5 gap-4">
-      {jobs.map((job, index) => (
-        <div class="relative flex flex-col items-center">
-          <span class="text-xs text-gray-400 mb-4">{job.startDate}</span>
-          <TimelineDot isLatest={index === jobs.length - 1} />
-          <JobCard {...job} />
+    <!-- Desktop: Horizontal Timeline -->
+    <div class="hidden md:block relative">
+        <!-- Horizontal line -->
+        <div class="absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gray-500">
         </div>
-      ))}
-    </div>
-  </div>
 
-  <!-- Mobile: Vertical Timeline -->
-  <div class="md:hidden relative">
-    <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-500"></div>
-
-    <div class="space-y-4">
-      {jobs.reverse().map((job, index) => (
-        <div class="relative flex items-center">
-          <TimelineDot isLatest={index === 0} isMobile={true} />
-          <JobCard {...job} isMobile={true} />
+        <div class="grid grid-cols-5 gap-4">
+            {
+                jobs.map((job, index) => (
+                    <div class="relative flex flex-col items-center">
+                        <span class="text-xs text-gray-400 mb-4">
+                            {job.startDate}
+                        </span>
+                        <TimelineDot isLatest={index === jobs.length - 1} />
+                        <JobCard {...job} />
+                    </div>
+                ))
+            }
         </div>
-      ))}
     </div>
-  </div>
+
+    <!-- Mobile: Vertical Timeline -->
+    <div class="md:hidden relative">
+        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-500"></div>
+
+        <div class="space-y-4">
+            {
+                jobs.reverse().map((job, index) => (
+                    <div class="relative flex items-center">
+                        <TimelineDot isLatest={index === 0} isMobile={true} />
+                        <JobCard {...job} isMobile={true} />
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </div>
