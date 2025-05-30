@@ -20,33 +20,37 @@ const { title, company, logo, url, isMobile = false } = Astro.props;
 >
     {
         isMobile ? (
-            <div class="flex items-center">
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                    <Image
-                        src={logo}
-                        alt={`${company} logo`}
-                        class="w-8 h-8 rounded-lg mr-3 bg-neutral-100 p-1"
-                    />
-                </a>
+            <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center"
+            >
+                <Image
+                    src={logo}
+                    alt={`${company} logo`}
+                    class="w-8 h-8 rounded-lg mr-3 bg-neutral-100 p-1"
+                />
+
                 <div class="flex-1">
                     <h3 class="text-sm font-semibold text-neutral-100">
                         {title}
                     </h3>
                     <p class="text-xs text-grey-300">{company}</p>
                 </div>
-            </div>
+            </a>
         ) : (
             <>
                 <a
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="pixel-corners inline-block bg-neutral-100 mb-3"
+                    class="pixel-corners inline-block bg-neutral-200 hover:bg-neutral-300 mb-3"
                 >
                     <Image
                         src={logo}
                         alt={`${company} logo`}
-                        class="w-16 h-16 mx-auto p-1"
+                        class="w-14 h-14 mx-auto p-1"
                         loading="eager"
                     />
                 </a>
