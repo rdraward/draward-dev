@@ -1,5 +1,9 @@
 ---
 import "../styles/pixel-corners.css";
+import { Image } from "astro:assets";
+import JobCard from "./JobCard.astro";
+import GadgetLogo from "../assets/logos/gadget.png";
+import HomeIcon from "../assets/icons/home.svg";
 
 interface ContentItem {
     title: string;
@@ -36,35 +40,39 @@ const writtenWork: ContentItem[] = [
 ];
 ---
 
-<main class="min-h-screen flex flex-col">
-    <h1 class="text-4xl text-center py-8">Stuff I made</h1>
-
-    <div class="flex-1 flex relative">
-        <div class="w-48 h-48">
-            <a
-                class="w-full h-full text-neutral-100 hover:text-neutral-300 transition-colors duration-200 bg-neutral-600 pixel-corners p-6 flex flex-col items-center justify-center text-center"
-                href="https://youtube.com/@yourchannel"
-                target="_blank"
-                aria-label="YouTube Channel"
-            >
-                <div class="text-xl font-medium mb-4">Videos</div>
-                <div class="text-lg font-medium">Visit my YouTube Channel</div>
-                <div class="text-sm text-neutral-300 mt-2">
-                    Watch all my videos
-                </div>
-            </a>
+<main class="min-h-screen flex flex-col p-16">
+    <div class="flex flex-col items-center pb-12">
+        <h1 class="text-4xl p-4">Stuff I've made :)</h1>
+        <a
+            href="/"
+            class="text-neutral-100 hover:text-neutral-300 transition-colors"
+        >
+            <Image src={HomeIcon} alt="Home" class="w-6 h-6 text-neutral-100" />
+        </a>
+    </div>
+    <div class="flex relative gap-8">
+        <div>
+            <h2 class="text-xl font-semibold p-4 text-center">Videos</h2>
+            <div class="w-48 h-48">
+                <JobCard
+                    title="Tutorials & Demos"
+                    company="Gadget"
+                    logo={GadgetLogo}
+                    url="https://www.youtube.com/@gadget_dev"
+                />
+            </div>
         </div>
         <div class="flex-1">
             <div class="max-h-96 overflow-y-auto">
                 <table class="w-full">
-                    <thead class="sticky top-0 bg-neutral-800">
+                    <thead class="bg-neutral-300">
                         <tr>
                             <th
-                                class="text-left p-4 text-lg font-medium text-neutral-100"
+                                class="text-left p-4 text-xl font-semibold text-neutral-900"
                                 >Writing</th
                             >
                             <th
-                                class="text-right p-4 text-lg font-medium text-neutral-100"
+                                class="text-right p-4 text-lg font-semibold text-neutral-900"
                                 >Date</th
                             >
                         </tr>
@@ -72,18 +80,18 @@ const writtenWork: ContentItem[] = [
                     <tbody>
                         {
                             writtenWork.map((item) => (
-                                <tr class="border-b border-neutral-700 hover:bg-neutral-700 transition-colors">
-                                    <td class="p-4">
+                                <tr class="border-b border-neutral-700 hover:bg-slate-600 transition-colors">
+                                    <td colspan="2">
                                         <a
                                             href={item.href}
                                             target="_blank"
-                                            class="text-neutral-100 hover:text-neutral-300 transition-colors font-medium"
+                                            class="p-4 flex justify-between w-full text-neutral-100 hover:text-neutral-300 transition-colors font-medium"
                                         >
-                                            {item.title}
+                                            <span>{item.title}</span>
+                                            <span class="text-right text-neutral-300 text-sm">
+                                                {item.date}
+                                            </span>
                                         </a>
-                                    </td>
-                                    <td class="p-4 text-right text-neutral-300 text-sm">
-                                        {item.date}
                                     </td>
                                 </tr>
                             ))
