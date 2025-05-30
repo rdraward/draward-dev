@@ -40,7 +40,21 @@ const writtenWork: ContentItem[] = [
     <h1 class="text-4xl text-center py-8">Stuff I made</h1>
 
     <div class="flex-1 flex relative">
-        <div class="flex-1 p-6 pl-80">
+        <div class="w-48 h-48">
+            <a
+                class="w-full h-full text-neutral-100 hover:text-neutral-300 transition-colors duration-200 bg-neutral-600 pixel-corners p-6 flex flex-col items-center justify-center text-center"
+                href="https://youtube.com/@yourchannel"
+                target="_blank"
+                aria-label="YouTube Channel"
+            >
+                <div class="text-xl font-medium mb-4">Videos</div>
+                <div class="text-lg font-medium">Visit my YouTube Channel</div>
+                <div class="text-sm text-neutral-300 mt-2">
+                    Watch all my videos
+                </div>
+            </a>
+        </div>
+        <div class="flex-1">
             <div class="max-h-96 overflow-y-auto">
                 <table class="w-full">
                     <thead class="sticky top-0 bg-neutral-800">
@@ -77,22 +91,6 @@ const writtenWork: ContentItem[] = [
                     </tbody>
                 </table>
             </div>
-        </div>
-
-        <!-- Fixed Video Square (Left) -->
-        <div class="fixed top-32 left-6 w-64 h-64">
-            <a
-                class="w-full h-full text-neutral-100 hover:text-neutral-300 transition-colors duration-200 bg-neutral-600 pixel-corners p-6 flex flex-col items-center justify-center text-center"
-                href="https://youtube.com/@yourchannel"
-                target="_blank"
-                aria-label="YouTube Channel"
-            >
-                <div class="text-xl font-medium mb-4">Videos</div>
-                <div class="text-lg font-medium">Visit my YouTube Channel</div>
-                <div class="text-sm text-neutral-300 mt-2">
-                    Watch all my videos
-                </div>
-            </a>
         </div>
     </div>
 </main>
