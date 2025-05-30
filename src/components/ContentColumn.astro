@@ -1,0 +1,31 @@
+---
+import ContentLink from "./ContentLink.astro";
+
+export interface ContentItem {
+    title: string;
+    href: string;
+    date: string;
+}
+
+interface Props {
+    title: string;
+    items: ContentItem[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<div class="flex flex-col">
+    <h2 class="text-2xl text-center mb-6">{title}</h2>
+    <div class="flex flex-col gap-4">
+        {
+            items.map((item) => (
+                <ContentLink
+                    title={item.title}
+                    href={item.href}
+                    date={item.date}
+                />
+            ))
+        }
+    </div>
+</div>
