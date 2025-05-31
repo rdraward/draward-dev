@@ -3,11 +3,12 @@ import { defineCollection, z } from "astro:content";
 import { file } from "astro/loaders";
 
 const links = defineCollection({
-  loader: file("data/links.json"),
+  loader: file("src/content/links.json"),
   schema: z.object({
+    id: z.string(),
     title: z.string(),
     href: z.string().url(),
-    date: z.string().date(),
+    date: z.string(),
     type: z.enum([
       "case-study",
       "light-hearted",
