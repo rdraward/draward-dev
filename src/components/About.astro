@@ -1,9 +1,11 @@
 ---
-import Link from "./Link.astro";
+import SocialLink from "./SocialLink.astro";
 import Timeline from "./Timeline.astro";
 import GitHubIcon from "../assets/icons/github.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
 import BlueskyIcon from "../assets/icons/bluesky.svg";
+import BlogIcon from "../assets/icons/blog.svg";
+import YouTubeIcon from "../assets/icons/youtube.svg";
 ---
 
 <main class="min-h-screen flex flex-col flex-auto">
@@ -17,21 +19,30 @@ import BlueskyIcon from "../assets/icons/bluesky.svg";
         </p>
         <div class="mt-3 flex justify-center items-center">
             <div class="flex flex-row gap-4">
-                <Link href="https://github.com/rdraward" name="GitHub">
+                <SocialLink href="https://github.com/rdraward" name="GitHub">
                     <GitHubIcon width={24} />
-                </Link>
-                <Link
+                </SocialLink>
+                <SocialLink
                     href="https://www.linkedin.com/in/riley-draward"
-                    name="LinkedIn"
+                    name="SocialLinkedIn"
                 >
                     <LinkedInIcon width={24} />
-                </Link>
-                <Link
+                </SocialLink>
+                <SocialLink
                     href="https://bsky.app/profile/draward.dev"
                     name="Bluesky"
                 >
                     <BlueskyIcon width={24} />
-                </Link>
+                </SocialLink>
+                <!-- <SocialLink
+                    href="https://www.youtube.com/@BitsBytesAndBricks"
+                    name="YouTube"
+                >
+                    <YouTubeIcon width={24} />
+                </SocialLink>
+                <SocialLink href="/stuff" name="My stuff" target="_self">
+                    <BlogIcon width={24} />
+                </SocialLink> -->
             </div>
         </div>
         <Timeline />
