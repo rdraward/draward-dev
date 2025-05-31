@@ -9,8 +9,8 @@ const links = defineCollection({
     href: z.string().url(),
     date: z.string(),
     type: z.enum([
-      "case-study",
-      "light-hearted",
+      "case study",
+      "lighthearted",
       "editorial",
       "guide",
       "announcement",
