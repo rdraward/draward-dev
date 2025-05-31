@@ -4,6 +4,8 @@ import Timeline from "./Timeline.astro";
 import GitHubIcon from "../assets/icons/github.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
 import BlueskyIcon from "../assets/icons/bluesky.svg";
+import BlogIcon from "../assets/icons/blog.svg";
+import YouTubeIcon from "../assets/icons/youtube.svg";
 ---
 
 <main class="min-h-screen flex flex-col flex-auto">
@@ -32,14 +34,17 @@ import BlueskyIcon from "../assets/icons/bluesky.svg";
                 >
                     <BlueskyIcon width={24} />
                 </SocialLink>
+                <SocialLink
+                    href="https://www.youtube.com/@BitsBytesAndBricks"
+                    name="YouTube"
+                >
+                    <YouTubeIcon width={24} />
+                </SocialLink>
+                <SocialLink href="/stuff" name="My stuff" target="_self">
+                    <BlogIcon width={24} />
+                </SocialLink>
             </div>
         </div>
-        <a
-            href="/stuff"
-            class="mx-auto text-center text-neutral-100 hover:text-neutral-300 underline"
-        >
-            Blog posts and videos
-        </a>
         <Timeline />
     </div>
     <div class="space-invader mx-auto"></div>
