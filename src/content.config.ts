@@ -6,7 +6,7 @@ const links = defineCollection({
   loader: file("src/content/links.json"),
   schema: z.object({
     title: z.string(),
-    href: z.string().url(),
+    url: z.string().url(),
     date: z.string(),
     type: z.enum([
       "case study",
