@@ -1,6 +1,5 @@
 ---
 import "../styles/pixel-corners.css";
-import { Image } from "astro:assets";
 import JobCard from "./JobCard.astro";
 import GadgetLogo from "../assets/logos/gadget.png";
 import HomeIcon from "../assets/icons/home.svg";
@@ -41,14 +40,15 @@ const writtenWork: ContentItem[] = [
 ---
 
 <main class="min-h-screen flex flex-col p-16">
-    <div class="flex flex-col items-center pb-12">
-        <h1 class="text-4xl p-4">Stuff I've made :)</h1>
-        <a
-            href="/"
-            class="text-neutral-100 hover:text-neutral-300 transition-colors"
-        >
-            <Image src={HomeIcon} alt="Home" class="w-6 h-6 text-neutral-100" />
-        </a>
+    <div class="flex items-start pb-12">
+        <div class="w-48 flex justify-center">
+            <a href="/" class="mt-5">
+                <HomeIcon class="w-6 h-6 text-neutral-100 hover:text-neutral-300" />
+            </a>
+        </div>
+        <div class="flex-1 flex justify-center">
+            <h1 class="text-4xl p-4">Stuff I've made :)</h1>
+        </div>
     </div>
     <div class="flex relative gap-8">
         <div>
