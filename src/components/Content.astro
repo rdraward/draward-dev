@@ -83,17 +83,17 @@ links.sort((linkA, linkB) => {
                                     class={`hover:bg-slate-600 transition-colors ${index % 2 === 0 ? "" : "bg-slate-700"} cursor-pointer`}
                                     onclick={`window.open('${item.data.url}', '_blank')`}
                                 >
-                                    <td class="truncate p-4">
+                                    <td class="truncate p-2">
                                         <span class="text-neutral-100 font-medium text-wrap">
                                             {item.data.title}
                                         </span>
                                     </td>
-                                    <td class="text-center w-32 p-4">
+                                    <td class="text-center w-32">
                                         <span class="text-neutral-300 text-sm">
                                             {item.data.type}
                                         </span>
                                     </td>
-                                    <td class="text-center w-32 p-4">
+                                    <td class="text-center w-32">
                                         <span class="text-neutral-300 text-sm">
                                             {item.data.date}
                                         </span>
