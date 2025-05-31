@@ -15,6 +15,7 @@ interface Link {
             | "lighthearted"
             | "editorial"
             | "guide"
+            | "learn"
             | "announcement";
     };
 }
@@ -28,15 +29,18 @@ links.sort((linkA, linkB) => {
 <main class="h-screen flex flex-col p-16">
     <div class="flex items-start pb-12">
         <div class="w-48 flex justify-center">
-            <a href="/" class="mt-5" aria-label="Go back home" }>
-                <HomeIcon
-                    class="w-6 h-6 text-neutral-100 hover:text-neutral-300"
-                />
+            <a
+                href="/"
+                class="flex flex-col mt-5 items-center text-neutral-100 hover:text-neutral-300"
+                aria-label="Go back home"
+            >
+                <HomeIcon class="w-6 h-6 pb-1" />
+                Go back
             </a>
         </div>
         <div class="flex-1 flex-col text-center">
-            <h1 class="text-4xl p-2">Stuff I've wrote :)</h1>
-            <h2 class="text-2xl">(and videos)</h2>
+            <h1 class="text-4xl p-2">Blog posts</h1>
+            <h2 class="text-2xl">(plus, videos)</h2>
         </div>
     </div>
     <div class="flex relative gap-8 flex-1 overflow-hidden">
@@ -67,7 +71,7 @@ links.sort((linkA, linkB) => {
                                 >Type</th
                             >
                             <th
-                                class="text-right p-4 text-lg font-semibold text-neutral-900 w-32"
+                                class="text-center p-4 text-lg font-semibold text-neutral-900 w-32"
                                 >Date</th
                             >
                         </tr>
@@ -89,7 +93,7 @@ links.sort((linkA, linkB) => {
                                             {item.data.type}
                                         </span>
                                     </td>
-                                    <td class="text-right w-32 p-4">
+                                    <td class="text-center w-32 p-4">
                                         <span class="text-neutral-300 text-sm">
                                             {item.data.date}
                                         </span>

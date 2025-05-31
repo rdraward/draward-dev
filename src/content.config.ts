@@ -13,6 +13,7 @@ const links = defineCollection({
       "lighthearted",
       "editorial",
       "guide",
+      "learn",
       "announcement",
     ]),
   }),

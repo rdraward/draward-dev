@@ -95,7 +95,7 @@
     "title": "Bring the power of Gadget to your command line!",
     "url": "https://gadget.dev/blog/file-sync-announcement",
     "type": "announcement",
-    "date": "2022-12-19"
+    "date": "2022-09-06"
   },
   {
     "id": "0da48d4f-9cfb-4c0a-ae04-b77c7ca0131b",
@@ -180,5 +180,180 @@
     "url": "https://gadget.dev/blog/securing-your-gadget-app-using-gadgets-authorization-system-to-keep-your-api-and-data-secure",
     "type": "guide",
     "date": "2023-09-26"
+  },
+  {
+    "id": "89b2dc65-824c-4e5c-a34d-d52cc313252e",
+    "title": "How to: listen to a 3rd party webhook in Gadget",
+    "url": "https://gadget.dev/blog/how-to-listen-to-a-3rd-party-webhook-in-gadget",
+    "type": "guide",
+    "date": "2023-05-30"
+  },
+  {
+    "id": "ef280c80-3c41-43ec-a4d7-1d0d3ed59011",
+    "title": "How to: use Gadget as middleware between Shopify and an existing service",
+    "url": "https://gadget.dev/blog/using-gadget-as-middleware",
+    "type": "guide",
+    "date": "2023-05-25"
+  },
+  {
+    "id": "75b24d77-b954-4736-af5b-b3d405bb61e5",
+    "title": "Build a product recommendation chatbot for a Shopify store using OpenAI and Gadget",
+    "url": "https://gadget.dev/blog/build-a-product-recommendation-chatbot-for-a-shopify-store-using-openai-and-gadget",
+    "type": "guide",
+    "date": "2023-05-12"
+  },
+  {
+    "id": "fc92e560-818d-439a-8531-98b77a519e99",
+    "title": "Build a pre-purchase Shopify checkout UI extension",
+    "url": "https://gadget.dev/blog/pre-purchase-checkout-ui-extension",
+    "type": "guide",
+    "date": "2023-04-28"
+  },
+  {
+    "id": "75b24d77-b954-4736-af5b-b3d405bb61e5",
+    "title": "Build a product recommendation chatbot for a Shopify store using OpenAI and Gadget",
+    "url": "https://gadget.dev/blog/build-a-product-recommendation-chatbot-for-a-shopify-store-using-openai-and-gadget",
+    "type": "guide",
+    "date": "2023-05-12"
+  },
+  {
+    "id": "6c421d65-77a4-4833-b031-ba9a7f046884",
+    "title": "Build an Automated Product Tagging app for a Shopify store",
+    "url": "https://gadget.dev/blog/build-automated-product-tagger",
+    "type": "guide",
+    "date": "2023-04-12"
+  },
+  {
+    "id": "7ba9a5ca-505b-44a0-b1b7-fffbf311b9b8",
+    "title": "The fastest way to build Shopify checkout UI extensions",
+    "url": "https://gadget.dev/blog/the-fastest-way-to-build-shopify-checkout-ui-extensions",
+    "type": "guide",
+    "date": "2023-04-05"
+  },
+  {
+    "id": "6c4337a7-eb1a-40fd-8dae-9eccd9970a7f",
+    "title": "How to build a custom Shopify dashboard (in no time at all!) with Retool and Gadget",
+    "url": "https://gadget.dev/blog/retool-and-gadget",
+    "type": "guide",
+    "date": "2023-01-09"
+  },
+  {
+    "id": "241b1ce3-331c-4ead-9722-adb9363347bc",
+    "title": "Build a Shopify Function using AssemblyScript",
+    "url": "https://gadget.dev/blog/build-a-shopify-function-using-assemblyscript",
+    "type": "guide",
+    "date": "2022-10-04"
+  },
+  {
+    "id": "a2bcea19-33ef-4070-b4d6-601b47eccb4a",
+    "title": "How to: Build a blog with built-in Google authentication",
+    "url": "https://gadget.dev/blog/how-to-build-a-blog-with-built-in-google-authentication",
+    "type": "guide",
+    "date": "2023-08-18"
+  },
+  {
+    "id": "ae96d4c6-5cd8-4eac-8c96-00a7021b31b0",
+    "title": "How to: Build a language translator app powered by OpenAI",
+    "url": "https://gadget.dev/blog/how-to-build-a-language-translator-app-powered-by-openai",
+    "type": "guide",
+    "date": "2023-09-19"
+  },
+  {
+    "id": "ced14c0e-5d53-447b-a0d1-f419c000075a",
+    "title": "How to: Add unit tests to your Gadget app",
+    "url": "https://gadget.dev/blog/how-to-add-unit-tests-to-your-gadget-app",
+    "type": "guide",
+    "date": "2023-09-05"
+  },
+  {
+    "id": "169a525f-e44e-45f2-81e9-87ae47c4e228",
+    "title": "Securing your Gadget app: Making requests from the Shopify Storefront",
+    "url": "https://gadget.dev/blog/securing-your-gadget-app-making-requests-from-the-shopify-storefront",
+    "type": "guide",
+    "date": "2023-09-12"
+  },
+  {
+    "id": "e687e34c-94a4-490f-aad0-908538062121",
+    "title": "Building for Shopify: How to improve your LCP score when developing apps with Gadget",
+    "url": "https://gadget.dev/blog/building-for-shopify-how-to-improve-your-lcp-score-when-developing-apps-with-gadget",
+    "type": "guide",
+    "date": "2024-06-13"
+  },
+  {
+    "id": "977223c2-44c3-4b22-b097-e43df8bedf98",
+    "title": "Setting up a local dev environment for building Shopify themes",
+    "url": "https://gadget.dev/blog/setting-up-a-local-dev-environment-for-building-shopify-themes",
+    "type": "guide",
+    "date": "2024-02-22"
+  },
+  {
+    "id": "867de36a-a957-4573-887f-54251a780c53",
+    "title": "3 practical and 3 creative ideas for extending the product quiz template",
+    "url": "https://gadget.dev/blog/3-practical-and-3-creative-ideas-for-extending-the-product-quiz-template",
+    "type": "editorial",
+    "date": "2024-01-25"
+  },
+  {
+    "id": "f6c44b06-64bc-4152-a3a6-9d30f5e25ebc",
+    "title": "How to: Use Google Cloud Tasks to manage Airtable rate limits",
+    "url": "https://gadget.dev/blog/how-to-use-google-cloud-tasks-to-manage-airtable-rate-limits",
+    "type": "guide",
+    "date": "2023-10-24"
+  },
+  {
+    "id": "b3dceb29-6205-4698-b033-39a16c89355f",
+    "title": "How to: Integrate Shopify and Airtable using Gadget",
+    "url": "https://gadget.dev/blog/how-to-integrate-shopify-and-airtable-using-gadget",
+    "type": "guide",
+    "date": "2023-10-19"
+  },
+  {
+    "id": "223fc318-66b8-49be-80e7-39564bebdb08",
+    "title": "How to: use Gadget's OpenAI connection to call the DALL-E 2 API",
+    "url": "https://gadget.dev/blog/how-to-call-dall-e-api",
+    "type": "guide",
+    "date": "2023-08-29"
+  },
+  {
+    "id": "8ba3e5a4-eeae-452c-b7f2-1e93e9334bd4",
+    "title": "How to: Build a chatbot that generates custom movie scenes using OpenAI",
+    "url": "https://gadget.dev/blog/how-to-build-a-chatbot-that-generates-custom-movie-scenes-using-openai",
+    "type": "guide",
+    "date": "2024-08-24"
+  },
+  {
+    "id": "27f5447e-540e-49ae-a293-af05654e4237",
+    "title": "Forkable app template: usage-based billing for public Shopify apps",
+    "url": "https://gadget.dev/blog/forkable-app-template-usage-based-billing-for-public-shopify-apps",
+    "type": "announcement",
+    "date": "2023-06-22"
+  },
+  {
+    "id": "c398e126-2889-4e0b-9f0d-3e92c5dbd554",
+    "title": "One-click deploys and a separate development environment",
+    "url": "https://gadget.dev/blog/one-click-deploys-and-environments",
+    "type": "announcement",
+    "date": "2022-12-12"
+  },
+  {
+    "id": "13fe8942-6961-411c-9323-5220afddee7f",
+    "title": "What is a merge queue and do you need one?",
+    "url": "https://trunk.io/learn/what-is-a-merge-queue-and-do-you-need-one",
+    "type": "learn",
+    "date": "2025-02-08"
+  },
+  {
+    "id": "35772951-b704-49d2-9304-ce174bee8021",
+    "title": "Stop flaky tests from sabotaging your merge queue",
+    "url": "https://trunk.io/blog/stop-flaky-tests-from-sabotaging-your-merge-queue",
+    "type": "learn",
+    "date": "2025-03-04"
+  },
+  {
+    "id": "49658193-a8d9-42cf-83c0-0d142d118c7c",
+    "title": "How to avoid and detect flaky tests in Cypress?",
+    "url": "https://trunk.io/learn/how-to-avoid-flaky-tests-in-cypress",
+    "type": "guide",
+    "date": "2025-02-12"
   }
 ]
