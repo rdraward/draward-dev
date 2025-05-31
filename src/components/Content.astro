@@ -2,6 +2,7 @@
 import "../styles/pixel-corners.css";
 import JobCard from "./JobCard.astro";
 import GadgetLogo from "../assets/logos/gadget.png";
+import BitsBytesBricksLogo from "../assets/logos/bits-bytes-bricks.png";
 import HomeIcon from "../assets/icons/home.svg";
 import { getCollection } from "astro:content";
 
@@ -48,9 +49,19 @@ links.sort((linkA, linkB) => {
     <div
         class="flex flex-col md:flex-row relative gap-4 md:gap-8 flex-1 overflow-hidden"
     >
-        <div class="flex flex-row md:flex-col items-center gap-4 md:gap-0">
-            <h2 class="text-xl font-semibold p-4 text-center">Videos</h2>
-            <div class="w-48 h-48">
+        <div class="flex flex-col items-center">
+            <h2
+                class="text-xl font-semibold p-4 text-center order-first md:order-none"
+            >
+                Videos
+            </h2>
+            <div class="w-48 flex md:flex-col">
+                <JobCard
+                    title="Learn with LEGO"
+                    company="Bits, Bytes and Bricks"
+                    logo={BitsBytesBricksLogo}
+                    url="https://www.youtube.com/@gadget_dev"
+                />
                 <JobCard
                     title="Tutorials & Demos"
                     company="Gadget"
