@@ -25,7 +25,7 @@ links.sort((linkA, linkB) => {
 });
 ---
 
-<main class="min-h-screen flex flex-col p-16">
+<main class="h-screen flex flex-col p-16">
     <div class="flex items-start pb-12">
         <div class="w-48 flex justify-center">
             <a href="/" class="mt-5">
@@ -38,7 +38,7 @@ links.sort((linkA, linkB) => {
             <h1 class="text-4xl p-4">Stuff I've made :)</h1>
         </div>
     </div>
-    <div class="flex relative gap-8">
+    <div class="flex relative gap-8 flex-1 overflow-hidden">
         <div>
             <h2 class="text-xl font-semibold p-4 text-center">Videos</h2>
             <div class="w-48 h-48">
@@ -51,9 +51,9 @@ links.sort((linkA, linkB) => {
             </div>
         </div>
         <div class="flex-1">
-            <div class="max-h-96 overflow-y-auto">
+            <div class="h-full overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 <table class="w-full">
-                    <thead class="bg-neutral-300">
+                    <thead class="bg-neutral-300 sticky top-0">
                         <tr>
                             <th
                                 class="text-left p-4 text-xl font-semibold text-neutral-900"
