@@ -53,7 +53,7 @@ links.sort((linkA, linkB) => {
             <h2
                 class="text-xl font-semibold p-4 pb-0 md:pb-4 text-center order-first md:order-none"
             >
-                YouTube Channels
+                YouTube channels
             </h2>
             <div class="w-48 flex md:flex-col">
                 <JobCard
@@ -78,15 +78,15 @@ links.sort((linkA, linkB) => {
                     <thead class="bg-neutral-300 sticky top-0">
                         <tr>
                             <th
-                                class="text-left p-2 md:p-4 text-lg md:text-xl font-semibold text-neutral-900 w-[60%]"
+                                class="text-left p-2 md:p-4 text-lg md:text-xl font-semibold text-neutral-900 w-3/5"
                                 >Title</th
                             >
                             <th
-                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-neutral-900 w-[20%] hidden sm:table-cell"
+                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-neutral-900 w-1/5 hidden sm:table-cell"
                                 >Type</th
                             >
                             <th
-                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-neutral-900 w-[20%]"
+                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-neutral-900 w-1/5"
                                 >Date</th
                             >
                         </tr>
@@ -103,12 +103,12 @@ links.sort((linkA, linkB) => {
                                             {item.data.title}
                                         </span>
                                     </td>
-                                    <td class="text-center w-[20%] hidden sm:table-cell">
+                                    <td class="text-center w-1/5 hidden sm:table-cell">
                                         <span class="text-neutral-300 text-xs md:text-sm">
                                             {item.data.type}
                                         </span>
                                     </td>
-                                    <td class="text-center w-[20%]">
+                                    <td class="text-center w-1/5">
                                         <span class="text-neutral-300 text-xs md:text-sm">
                                             {item.data.date}
                                         </span>
