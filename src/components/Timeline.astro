@@ -62,7 +62,9 @@ const jobs = [
                             {job.startDate}
                         </span>
                         <TimelineDot isLatest={index === jobs.length - 1} />
-                        <JobCard {...job} />
+                        <div class="mt-4">
+                            <JobCard {...job} />
+                        </div>
                     </div>
                 ))
             }

@@ -12,12 +12,7 @@ interface Props {
 const { title, company, logo, url, isMobile = false } = Astro.props;
 ---
 
-<div
-    class:list={[
-        "block",
-        isMobile ? "ml-12 p-3 flex-1" : "mt-4 p-2 text-center",
-    ]}
->
+<div class:list={["block", isMobile ? "ml-12 p-3 flex-1" : "p-2 text-center"]}>
     {
         isMobile ? (
             <a

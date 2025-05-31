@@ -31,10 +31,10 @@ links.sort((linkA, linkB) => {
     <div
         class="flex flex-col md:flex-row items-center md:items-start pb-2 md:pb-12"
     >
-        <div class="w-full md:w-48 flex justify-center mb-4 md:mb-0">
+        <div class="w-full md:w-48 flex justify-center mb-2 md:mb-0">
             <a
                 href="/"
-                class="flex flex-col mt-5 items-center text-neutral-100 hover:text-neutral-300"
+                class="flex flex-col mt-3 md:mt-5 items-center text-neutral-100 hover:text-neutral-300"
                 aria-label="Go back home"
             >
                 <HomeIcon class="w-6 h-6 pb-1" />
@@ -42,20 +42,20 @@ links.sort((linkA, linkB) => {
             </a>
         </div>
         <div class="flex-1 flex-col text-center">
-            <h1 class="text-4xl p-2">Blog posts</h1>
+            <h1 class="text-4xl md:p-2">Blog posts</h1>
             <h2 class="text-2xl">(plus, videos)</h2>
         </div>
     </div>
     <div
         class="flex flex-col md:flex-row relative gap-4 md:gap-8 flex-1 overflow-hidden"
     >
-        <div class="flex flex-col items-center">
+        <div class="md:w-48 flex flex-col items-center">
             <h2
-                class="text-xl font-semibold p-4 pb-0 md:pb-4 text-center order-first md:order-none"
+                class="text-l md:text-xl font-semibold p-4 pb-0 md:pb-4 text-center order-first md:order-none"
             >
                 YouTube channels
             </h2>
-            <div class="w-48 flex md:flex-col">
+            <div class="flex md:flex-col">
                 <JobCard
                     title="Learn with LEGO"
                     company="Bits, Bytes and Bricks"
