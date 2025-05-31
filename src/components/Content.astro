@@ -5,7 +5,24 @@ import GadgetLogo from "../assets/logos/gadget.png";
 import HomeIcon from "../assets/icons/home.svg";
 import { getCollection } from "astro:content";
 
-const links = await getCollection("links");
+interface Link {
+    data: {
+        title: string;
+        date: string;
+        url: string;
+        type:
+            | "case-study"
+            | "light-hearted"
+            | "editorial"
+            | "guide"
+            | "announcement";
+    };
+}
+
+const links: Link[] = await getCollection("links");
+links.sort((linkA, linkB) => {
+    return linkB.data.date.localeCompare(linkA.data.date);
+});
 ---
 
 <main class="min-h-screen flex flex-col p-16">

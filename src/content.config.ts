@@ -5,7 +5,6 @@ import { file } from "astro/loaders";
 const links = defineCollection({
   loader: file("src/content/links.json"),
   schema: z.object({
-    id: z.string(),
     title: z.string(),
     href: z.string().url(),
     date: z.string(),
