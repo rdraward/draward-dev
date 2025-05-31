@@ -1,0 +1,158 @@
+[
+  {
+    "title": "Not just smoke and mirrors: How Gadget automated pricing updates for products featured on Planet of the Vapes’ popular blog",
+    "href": "https://gadget.dev/blog/case-study-potv",
+    "type": "case-study",
+    "date": "2022-08"
+  },
+  {
+    "title": "How Alleyoop used Gadget to create a bespoke Shopify product customizer",
+    "href": "https://gadget.dev/blog/case-study-alleyoop",
+    "type": "case-study",
+    "date": "2022-06"
+  },
+  {
+    "title": "Q&A: Gadget’s business ops intern builds her first Shopify app",
+    "href": "https://gadget.dev/blog/gadget-intern-angela-builds-an-app",
+    "type": "light-hearted",
+    "date": "2023-05-19"
+  },
+  {
+    "title": "Gadget BFCM 2024 in numbers",
+    "href": "https://gadget.dev/blog/gadget-apps-bfcm-2024-in-numbers",
+    "type": "editorial",
+    "date": "2024-12-11"
+  },
+  {
+    "title": "Top 3 highlights from Shopify's Winter Editions '23",
+    "href": "https://gadget.dev/blog/top-3-highlights-from-shopifys-winter-editions-23",
+    "type": "editorial",
+    "date": "2023-02-28"
+  },
+  {
+    "title": "Top 3 highlights from Shopify's Summer Editions '23",
+    "href": "https://gadget.dev/blog/top-3-highlights-from-shopifys-summer-editions-23",
+    "type": "editorial",
+    "date": "2023-08-10"
+  },
+  {
+    "title": "4 developer highlights from Shopify’s Winter '25 Editions",
+    "href": "https://gadget.dev/blog/4-developer-highlights-from-shopifys-winter-25-editions",
+    "type": "editorial",
+    "date": "2024-12-12"
+  },
+  {
+    "title": "3 developer highlights from Shopify’s Summer ‘24 Editions",
+    "href": "https://gadget.dev/blog/shopify-summer-24-editions-recap",
+    "type": "editorial",
+    "date": "2024-07-17"
+  },
+  {
+    "title": "3 developer highlights from Shopify’s ‘24 Winter Editions",
+    "href": "https://gadget.dev/blog/3-developer-highlights-from-shopifys-24-winter-editions",
+    "type": "editorial",
+    "date": "2024-02-01"
+  },
+  {
+    "title": "Shopify’s product overhaul: 2,000 variants, new GraphQL mutations, and a farewell to REST",
+    "href": "https://gadget.dev/blog/shopifys-product-overhaul-2000-variants-new-graphql-mutations-and-a-farewell-to-rest",
+    "type": "editorial",
+    "date": "2024-02-14"
+  },
+  {
+    "title": "Gadget goes full-stack: Introducing hosted frontends!",
+    "href": "https://gadget.dev/blog/gadget-goes-full-stack",
+    "type": "announcement",
+    "date": "2023-04-19"
+  },
+  {
+    "title": "Introducing computed fields: a speedy way to aggregate data",
+    "href": "https://gadget.dev/blog/write-computed-fields-in-gadget",
+    "type": "announcement",
+    "date": "2023-07-27"
+  },
+  {
+    "title": "Introducing collaborative development on Gadget",
+    "href": "https://gadget.dev/blog/introducing-collaborative-development-on-gadget",
+    "type": "announcement",
+    "date": "2022-12-19"
+  },
+  {
+    "title": "Bring the power of Gadget to your command line!",
+    "href": "https://gadget.dev/blog/file-sync-announcement",
+    "type": "announcement",
+    "date": "2022-12-19"
+  },
+  {
+    "title": "Introducing collaborative development on Gadget",
+    "href": "https://gadget.dev/blog/introducing-collaborative-development-on-gadget",
+    "type": "announcement",
+    "date": "2022-09-06"
+  },
+  {
+    "title": "Optimize web performance with cached HTTP route responses",
+    "href": "https://gadget.dev/blog/cache-http-route-responses-in-the-browser-and-on-gadgets-cdn",
+    "type": "announcement",
+    "date": "2023-09-21"
+  },
+  {
+    "title": "Shopify API version 2023-07: now available in all Gadget apps",
+    "href": "https://gadget.dev/blog/shopify-api-version-2023-07-now-available-in-all-gadget-apps",
+    "type": "announcement",
+    "date": "2023-08-21"
+  },
+  {
+    "title": "One-click deploys and a separate development environment",
+    "href": "https://gadget.dev/blog/one-click-deploys-and-environments",
+    "type": "announcement",
+    "date": "2022-12-12"
+  },
+  {
+    "title": "Run realtime queries in the Shopify storefront in Gadget framework v1.1",
+    "href": "https://gadget.dev/blog/realtime-queries-ggt-add-and-other-quality-of-life-changes",
+    "type": "announcement",
+    "date": "2024-05-30"
+  },
+  {
+    "title": "Introducing full TypeScript support for all Gadget apps!",
+    "href": "https://gadget.dev/blog/introducing-full-typescript-support-for-all-gadget-apps",
+    "type": "announcement",
+    "date": "2024-11-27"
+  },
+  {
+    "title": "To create or not to create… Introducing the upsert API!",
+    "href": "https://gadget.dev/blog/to-create-or-not-to-create-introducing-the-upsert-api",
+    "type": "announcement",
+    "date": "2024-07-30"
+  },
+  {
+    "title": "Shhhh! Keeping secrets using environment variables in Gadget",
+    "href": "https://gadget.dev/blog/using-environment-variables",
+    "type": "announcement",
+    "date": "2022-06-07"
+  },
+  {
+    "title": "Access full webhook payloads in Gadget code effects",
+    "href": "https://gadget.dev/blog/access-full-webhook-payloads",
+    "type": "announcement",
+    "date": "2023-03-31"
+  },
+  {
+    "title": "Real-time exception monitoring and alerts with Sentry",
+    "href": "https://gadget.dev/blog/real-time-exception-monitoring-and-alerts-with-sentry",
+    "type": "announcement",
+    "date": "2022-11-01"
+  },
+  {
+    "title": "Improving the Gadget data viewer and building for the way developers work",
+    "href": "https://gadget.dev/blog/improving-the-gadget-data-viewer-and-building-for-the-way-developers-work",
+    "type": "announcement",
+    "date": "2023-03-22"
+  },
+  {
+    "title": "Securing your Gadget app: Using Gadget's authorization system to keep your API (and data) secure",
+    "href": "https://gadget.dev/blog/securing-your-gadget-app-using-gadgets-authorization-system-to-keep-your-api-and-data-secure",
+    "type": "guide",
+    "date": "2023-09-26"
+  }
+]
