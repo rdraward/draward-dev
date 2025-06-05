@@ -5,13 +5,44 @@ import "../styles/global.css";
 <!doctype html>
 <html lang="en">
     <head>
+        <script is:inline>
+          // Check local storage for theme preference
+          const theme = (() => {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+              return localStorage.getItem('theme');
+            }
+            // Check OS-level preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              return 'dark';
+            }
+            // Default to light
+            return 'light';
+          })();
+
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+
+          // Optional: Add a listener for OS-level preference changes
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+            if (event.matches) {
+              document.documentElement.classList.add('dark');
+              localStorage.setItem('theme', 'dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+              localStorage.setItem('theme', 'light');
+            }
+          });
+        </script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
         <title>Riley Draward</title>
     </head>
-    <body class="bg-slate-800 text-neutral-100 font-body">
+    <body class="font-body bg-background text-text dark:bg-dark-background dark:text-dark-text">
         <slot />
     </body>
 </html>

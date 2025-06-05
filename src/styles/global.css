@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 :root {
+    --space-invader-color: #84cc16;
+    --dinosaur-color: #c0002a;
+}
+
+.dark:root {
     --space-invader-color: #a3e635;
     --dinosaur-color: #d2042d;
 }

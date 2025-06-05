@@ -17,7 +17,7 @@ import YouTubeIcon from "../assets/icons/youtube.svg";
         <p class="mt-3 text-2xl text-center">
             Software Engineer & Developer Advocate
         </p>
-        <div class="mt-3 flex justify-center items-center">
+        <div class="mt-3 flex flex-col justify-center items-center"> {/* Changed to flex-col to stack button below links */}
             <div class="flex flex-row gap-4">
                 <SocialLink href="https://github.com/rdraward" name="GitHub">
                     <GitHubIcon width={24} />
@@ -44,8 +44,33 @@ import YouTubeIcon from "../assets/icons/youtube.svg";
                     <BlogIcon width={24} />
                 </SocialLink> -->
             </div>
+            {/* Theme Switcher Button START */}
+            <button id="theme-toggle" class="mt-4 p-2 border border-text dark:border-dark-text rounded text-text dark:text-dark-text hover:bg-text hover:text-background dark:hover:bg-dark-text dark:hover:text-dark-background transition-colors duration-200">
+                Toggle Theme
+            </button>
+            {/* Theme Switcher Button END */}
         </div>
         <Timeline />
     </div>
     <div class="space-invader mx-auto"></div>
 </main>
+
+<script>
+  // Theme toggle script
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      // Optional: Update button text based on theme
+      // themeToggle.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    });
+
+    // Optional: Set initial button text based on current theme
+    // This requires the script in Layout.astro to have run first to set the 'dark' class
+    // setTimeout(() => { // Use setTimeout to ensure class is set
+    //  const currentThemeIsDark = document.documentElement.classList.contains('dark');
+    //  themeToggle.textContent = currentThemeIsDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    // }, 0);
+  }
+</script>
