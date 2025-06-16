@@ -355,5 +355,12 @@
     "url": "https://trunk.io/learn/how-to-avoid-flaky-tests-in-cypress",
     "type": "guide",
     "date": "2025-02-12"
+  },
+  {
+    "id": "0a56b4dd-152d-47bb-a944-927217e04a06",
+    "title": "Merge fast or merge cheap: Fine-tuning merge queues to handle an increase in PRs from AI agents",
+    "url": "https://trunk.io/blog/merge-fast-or-merge-cheap-fine-tuning-merge-queues-to-handle-an-increase-in-prs-f",
+    "type": "learn",
+    "date": "2025-05-12"
   }
 ]
