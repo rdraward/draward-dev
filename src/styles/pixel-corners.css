@@ -203,5 +203,5 @@
 
 .pixel-corners:hover::after {
     opacity: 1;
-    animation: rotate-gradient 5s linear infinite;
+    animation: rotate-gradient 4s linear infinite;
 }
