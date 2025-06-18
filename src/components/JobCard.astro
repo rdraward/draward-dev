@@ -40,12 +40,12 @@ const { title, company, logo, url, isMobile = false } = Astro.props;
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="pixel-corners inline-block bg-neutral-200 hover:bg-neutral-300 mb-3"
+                    class="pixel-corners inline-block mb-3"
                 >
                     <Image
                         src={logo}
                         alt={`${company} logo`}
-                        class="w-14 h-14 mx-auto p-1"
+                        class="w-16 h-16 pixel-corners bg-neutral-100"
                         loading="eager"
                     />
                 </a>

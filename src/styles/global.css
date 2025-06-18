@@ -43,7 +43,7 @@
     overflow: hidden;
     margin: 3rem 5rem 4rem 5rem;
 
-    @media (min-width: 1024px) and (min-height: 700px) {
+    @media (min-width: 1400px) and (min-height: 700px) {
         position: relative;
         animation-name: invader;
         animation-duration: 20s;
@@ -52,7 +52,7 @@
         animation-direction: reverse;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1400px) {
         margin: 5rem auto;
     }
 }
@@ -110,7 +110,7 @@
     overflow: hidden;
     margin: 2.5rem 5.5rem 3.5rem 8.5rem;
 
-    @media (min-width: 1024px) and (min-height: 700px) {
+    @media (min-width: 1400px) and (min-height: 700px) {
         position: relative;
         animation-name: dino;
         animation-duration: 20s;
@@ -119,7 +119,7 @@
         animation-direction: reverse;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1400px) {
         margin-left: 50%;
         margin-top: 5rem;
     }
