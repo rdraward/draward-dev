@@ -119,13 +119,6 @@
     "date": "2023-08-21"
   },
   {
-    "id": "df52d4ae-c697-4ebb-858b-49072ebd7dc4",
-    "title": "One-click deploys and a separate development environment",
-    "url": "https://gadget.dev/blog/one-click-deploys-and-environments",
-    "type": "announcement",
-    "date": "2022-12-12"
-  },
-  {
     "id": "3523ebec-3d7a-43e9-830e-93446b475344",
     "title": "Run realtime queries in the Shopify storefront in Gadget framework v1.1",
     "url": "https://gadget.dev/blog/realtime-queries-ggt-add-and-other-quality-of-life-changes",
