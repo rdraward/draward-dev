@@ -355,5 +355,12 @@
     "url": "https://trunk.io/blog/merge-fast-or-merge-cheap-fine-tuning-merge-queues-to-handle-an-increase-in-prs-f",
     "type": "learn",
     "date": "2025-05-12"
+  },
+  {
+    "id": "c398e126-2889-4e0b-9f0d-3e92c5dbd554",
+    "title": "You don’t need a developer experience team to have a good internal DevEx",
+    "url": "https://trunk.io/blog/you-don-t-need-a-developer-experience-team-to-have-a-good-internal-devex",
+    "type": "learn",
+    "date": "2025-06-29"
   }
 ]
