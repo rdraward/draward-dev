@@ -16,6 +16,7 @@ const links = defineCollection({
       "learn",
       "announcement",
     ]),
+    ghost: z.boolean().default(false),
   }),
 });
 

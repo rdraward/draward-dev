@@ -178,6 +178,24 @@
     }
 }
 
+@keyframes ghostFloat {
+    0% {
+        transform: translateY(calc(-10px * var(--ghost-y1, 1)));
+    }
+    50% {
+        transform: translateY(calc(10px * var(--ghost-y2, 1)));
+    }
+    100% {
+        transform: translateY(calc(-10px * var(--ghost-y1, 1)));
+    }
+}
+
+.ghost-float {
+    animation: ghostFloat calc(4s + var(--ghost-duration, 0s)) ease-in-out
+        infinite;
+    animation-delay: var(--ghost-delay, 0s);
+}
+
 @theme {
     --font-sans: "Courier New", "monospace";
 }
