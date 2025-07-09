@@ -117,15 +117,7 @@ links.sort((linkA, linkB) => {
                                             {item.data.title}
                                         </span>
                                         {item.data.ghost && (
-                                            <GhostIcon
-                                                class="absolute w-5 h-5 text-neutral-100 opacity-60 ghost-float right-[-4px] top-1/2 -translate-y-1/2"
-                                                style={`
-                                                    --ghost-y1: ${Math.random()};
-                                                    --ghost-y2: ${Math.random()};
-                                                    --ghost-duration: ${Math.random() * 2}s;
-                                                    --ghost-delay: ${Math.random() * 1}s;
-                                                `}
-                                            />
+                                            <GhostIcon class="absolute w-5 h-5 text-neutral-100 opacity-60 ghost-float right-[-4px] top-1/2 -translate-y-1/2" />
                                         )}
                                     </td>
                                     <td class="text-center w-1/5 hidden sm:table-cell">
