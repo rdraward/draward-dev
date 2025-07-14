@@ -28,10 +28,10 @@ const { title, company, logo, url, isMobile = false } = Astro.props;
                 />
 
                 <div class="flex-1">
-                    <h3 class="text-sm font-semibold text-neutral-100">
+                    <h3 class="text-sm font-semibold">
                         {title}
                     </h3>
-                    <p class="text-xs text-grey-300">{company}</p>
+                    <p class="text-xs">{company}</p>
                 </div>
             </a>
         ) : (
@@ -49,10 +49,10 @@ const { title, company, logo, url, isMobile = false } = Astro.props;
                         loading="eager"
                     />
                 </a>
-                <h3 class="text-sm font-semibold text-neutral-100 mb-1">
+                <h3 class="text-sm font-semibold mb-1">
                     {title}
                 </h3>
-                <p class="text-xs text-grey-300 mb-2">{company}</p>
+                <p class="text-xs mb-2">{company}</p>
             </>
         )
     }

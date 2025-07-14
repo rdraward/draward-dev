@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+    --font-sans: "Courier New", "monospace";
+}
+
+@variant dark (.dark &);
+
+
+
 :root {
     --space-invader-color: #a3e635;
     --dinosaur-color: #d2042d;
@@ -151,6 +159,7 @@
         left: 1rem;
     }
 }
+
 @keyframes invader {
     0% {
         top: -1rem;
@@ -182,12 +191,15 @@
     0% {
         transform: translateY(0);
     }
+
     25% {
         transform: translateY(-5px);
     }
+
     75% {
         transform: translateY(5px);
     }
+
     100% {
         transform: translateY(0);
     }
@@ -195,8 +207,4 @@
 
 .ghost-float {
     animation: ghostFloat 5s linear infinite;
-}
-
-@theme {
-    --font-sans: "Courier New", "monospace";
 }
