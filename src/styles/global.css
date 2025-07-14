@@ -1,16 +1,26 @@
-@import "tailwindcss";
-
-@theme {
-    --font-sans: "Courier New", "monospace";
-}
-
-@variant dark (.dark &);
-
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
+    --font-family-sans: "Courier New", "monospace";
+    
+    /* Theme colors */
     --space-invader-color: #a3e635;
     --dinosaur-color: #d2042d;
+    
+    /* Animation timing */
+    --pixel-animation-duration: 20s;
+    --pixel-animation-steps: 10;
+    --ghost-float-duration: 5s;
+    
+    /* Responsive breakpoints */
+    --large-screen-min-width: 1400px;
+    --large-screen-min-height: 700px;
+    
+    /* Pixel art dimensions */
+    --pixel-unit: 1rem;
+    --pixel-half-unit: 0.5rem;
 }
 
 .space-invader {
@@ -51,12 +61,12 @@
     overflow: hidden;
     margin: 3rem 5rem 4rem 5rem;
 
-    @media (min-width: 1400px) and (min-height: 700px) {
+    @media (min-width: var(--large-screen-min-width)) and (min-height: var(--large-screen-min-height)) {
         position: relative;
         animation-name: invader;
-        animation-duration: 20s;
+        animation-duration: var(--pixel-animation-duration);
         animation-iteration-count: infinite;
-        animation-timing-function: steps(10, end);
+        animation-timing-function: steps(var(--pixel-animation-steps), end);
         animation-direction: reverse;
     }
 
@@ -118,12 +128,12 @@
     overflow: hidden;
     margin: 2.5rem 5.5rem 3.5rem 8.5rem;
 
-    @media (min-width: 1400px) and (min-height: 700px) {
+    @media (min-width: var(--large-screen-min-width)) and (min-height: var(--large-screen-min-height)) {
         position: relative;
         animation-name: dino;
-        animation-duration: 20s;
+        animation-duration: var(--pixel-animation-duration);
         animation-iteration-count: infinite;
-        animation-timing-function: steps(10, end);
+        animation-timing-function: steps(var(--pixel-animation-steps), end);
         animation-direction: reverse;
     }
 
@@ -206,5 +216,5 @@
 }
 
 .ghost-float {
-    animation: ghostFloat 5s linear infinite;
+    animation: ghostFloat var(--ghost-float-duration) linear infinite;
 }

@@ -1,29 +1,64 @@
 ---
-interface Props {
+export interface Props {
+  /** Additional CSS classes to apply to the button */
   class?: string;
+  /** Button size variant */
   size?: 'sm' | 'md' | 'lg';
+  /** Custom aria-label for accessibility */
+  'aria-label'?: string;
+  /** Whether the button should be disabled */
+  disabled?: boolean;
+  /** Custom ID for the button (defaults to 'theme-toggle') */
+  id?: string;
 }
 
-const { class: className = '', size = 'md' } = Astro.props;
+const { 
+  class: className = '', 
+  size = 'md',
+  'aria-label': ariaLabel = 'Toggle theme',
+  disabled = false,
+  id = 'theme-toggle'
+} = Astro.props;
 
+// Configuration objects for better maintainability and type safety
 const sizeClasses = {
   sm: 'w-8 h-8 p-1.5',
   md: 'w-10 h-10 p-2',
   lg: 'w-12 h-12 p-2.5'
-};
+} as const;
 
 const iconSizes = {
   sm: 20,
   md: 24,
   lg: 28
-};
+} as const;
+
+// Base button styles - separated for better maintainability
+const baseButtonClasses = [
+  'cursor-pointer',
+  'transition-all duration-200',
+  'focus:outline-none',
+  'focus:ring-2 focus:ring-offset-2',
+  'rounded',
+  'disabled:opacity-50 disabled:cursor-not-allowed'
+].join(' ');
+
+// Theme-aware color classes
+const colorClasses = [
+  'text-slate-600 hover:text-[var(--dinosaur-color)]',
+  'dark:text-neutral-300 dark:hover:text-[var(--space-invader-color)]',
+  'focus:ring-slate-400 focus:ring-offset-white',
+  'dark:focus:ring-neutral-500 dark:focus:ring-offset-slate-800'
+].join(' ');
 ---
 
 <button
-  id="theme-toggle"
-  class={`${sizeClasses[size]} ${className} rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-500`}
-  aria-label="Toggle theme"
+  id={id}
+  class={`${sizeClasses[size]} ${className} ${baseButtonClasses} ${colorClasses}`}
+  aria-label={ariaLabel}
   title="Toggle between light and dark theme"
+  disabled={disabled}
+  data-theme-toggle
 >
   <!-- Sun icon (visible in dark mode) -->
   <svg
@@ -36,6 +71,7 @@ const iconSizes = {
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    aria-hidden="true"
   >
     <circle cx="12" cy="12" r="5"></circle>
     <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
@@ -52,120 +88,57 @@ const iconSizes = {
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    aria-hidden="true"
   >
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
   </svg>
 </button>
 
 <script>
-  const STORAGE_KEY = 'theme-preference';
-  
-  function getStoredPreference() {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === 'light' || stored === 'dark' || stored === 'system') {
-        return stored;
-      }
-    } catch (error) {
-      console.warn('Failed to read theme preference from localStorage:', error);
-    }
-    return 'system';
-  }
-  
-  function getSystemPreference() {
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    return 'light';
-  }
-  
-  function resolveTheme(preference) {
-    if (preference === 'system') {
-      return getSystemPreference();
-    }
-    return preference;
-  }
-  
-  function getCurrentTheme() {
-    const preference = getStoredPreference();
-    return resolveTheme(preference);
-  }
-  
-  function applyTheme(theme) {
-    const html = document.documentElement;
-    
-    if (theme === 'dark') {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-    
-    // Dispatch custom event for components that need to react to theme changes
-    const event = new CustomEvent('theme-changed', { 
-      detail: { theme } 
-    });
-    document.dispatchEvent(event);
-  }
-  
-  function setTheme(preference) {
-    try {
-      localStorage.setItem(STORAGE_KEY, preference);
-    } catch (error) {
-      console.warn('Failed to save theme preference to localStorage:', error);
-    }
-    
-    const resolvedTheme = resolveTheme(preference);
-    applyTheme(resolvedTheme);
-  }
-  
-  function toggleTheme() {
-    const currentTheme = getCurrentTheme();
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  }
-  
+  // Simple theme toggle functionality without complex dependencies
   function initializeThemeToggle() {
-    const button = document.getElementById('theme-toggle');
-    console.log('Theme toggle button found:', button);
-    if (!button) {
-      console.error('Theme toggle button not found!');
-      return;
+    const button = document.querySelector('[data-theme-toggle]') as HTMLButtonElement;
+    if (!button) return;
+
+    // Simple theme toggle function
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+      
+      if (isDark) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme-preference', 'light');
+        updateAriaLabel('dark');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme-preference', 'dark');
+        updateAriaLabel('light');
+      }
     }
-    
-    // Update button aria-label based on current theme
-    function updateAriaLabel() {
-      const currentTheme = getCurrentTheme();
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      button.setAttribute('aria-label', `Switch to ${newTheme} theme`);
-      button.setAttribute('title', `Switch to ${newTheme} theme`);
+
+    // Update aria-label based on current theme
+    function updateAriaLabel(nextTheme: string) {
+      const label = `Switch to ${nextTheme} theme`;
+      button.setAttribute('aria-label', label);
+      button.setAttribute('title', label);
     }
-    
+
     // Initialize aria-label
-    updateAriaLabel();
+    const currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    updateAriaLabel(currentTheme);
+
+    // Add event listeners
+    button.addEventListener('click', toggleTheme);
     
-    // Handle click events
-    button.addEventListener('click', () => {
-      console.log('Toggle clicked, current theme:', getCurrentTheme());
-      toggleTheme();
-      updateAriaLabel();
-      console.log('New theme:', getCurrentTheme());
-    });
-    
-    // Handle keyboard events
+    // Handle keyboard navigation
     button.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         toggleTheme();
-        updateAriaLabel();
       }
     });
-    
-    // Listen for theme changes from other sources
-    document.addEventListener('theme-changed', () => {
-      updateAriaLabel();
-    });
   }
-  
+
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeThemeToggle);
