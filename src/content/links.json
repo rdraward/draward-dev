@@ -428,7 +428,15 @@
     "title": "The joy of a boring codebase",
     "url": "https://trunk.io/blog/the-joy-of-a-boring-codebase",
     "type": "editorial",
-    "date": "2025-07-15",
+    "date": "2025-07-14",
     "ghost": true
+  },
+  {
+    "id": "15856ae5-3575-4642-84dd-6769c45c09fb",
+    "title": "Early thoughts on Kiro, Amazon’s new agentic IDE/VSCode fork",
+    "url": "https://trunk.io/blog/early-thoughts-on-kiro-amazon-s-new-agentic-ide-vscode-fork",
+    "type": "editorial",
+    "date": "2025-07-15",
+    "ghost": false
   }
 ]
