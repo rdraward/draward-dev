@@ -31,11 +31,11 @@ links.sort((linkA, linkB) => {
 
 <main class="min-h-screen flex flex-col p-4 md:h-screen md:p-8">
     <div
-        class="block md:hidden sticky top-0 z-10 bg-slate-800 p-4 border-b border-slate-700"
+        class="block md:hidden sticky top-0 z-10 p-4 border-b border-slate-700"
     >
         <a
             href="/"
-            class="flex items-center justify-center text-neutral-100 hover:text-neutral-300"
+            class="flex items-center justify-center hover:text-neutral-300"
             aria-label="Go back home"
         >
             <HomeIcon class="w-6 h-6 mr-2" />
@@ -48,7 +48,7 @@ links.sort((linkA, linkB) => {
         <div class="hidden md:flex w-48 justify-center">
             <a
                 href="/"
-                class="flex flex-col mt-5 items-center text-neutral-100 hover:text-neutral-300"
+                class="flex flex-col mt-5 items-center hover:text-neutral-300"
                 aria-label="Go back home"
             >
                 <HomeIcon class="w-6 h-6 pb-1" />
@@ -113,11 +113,11 @@ links.sort((linkA, linkB) => {
                                     onclick={`window.open('${item.data.url}', '_blank')`}
                                 >
                                     <td class="break-words p-2 relative">
-                                        <span class="text-neutral-100 font-medium">
+                                        <span class="font-medium">
                                             {item.data.title}
                                         </span>
                                         {item.data.ghost && (
-                                            <GhostIcon class="absolute w-5 h-5 text-neutral-100 opacity-60 ghost-float right-[-4px] top-1/2 -translate-y-1/2" />
+                                            <GhostIcon class="absolute w-5 h-5 opacity-60 ghost-float right-[-4px] top-1/2 -translate-y-1/2" />
                                         )}
                                     </td>
                                     <td class="text-center w-1/5 hidden sm:table-cell">

@@ -422,5 +422,13 @@
     "type": "learn",
     "date": "2025-07-09",
     "ghost": true
+  },
+  {
+    "id": "8fd24f0c-1116-4113-a192-e6ebf2f275bf",
+    "title": "The joy of a boring codebase",
+    "url": "https://trunk.io/blog/the-joy-of-a-boring-codebase",
+    "type": "editorial",
+    "date": "2025-07-15",
+    "ghost": true
   }
 ]
