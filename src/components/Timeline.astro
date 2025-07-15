@@ -51,14 +51,14 @@ const jobs = [
     <!-- Desktop: Horizontal Timeline -->
     <div class="hidden md:block relative">
         <!-- Horizontal line -->
-        <div class="absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gray-500">
+        <div class="absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gray-500 dark:bg-gray-400">
         </div>
 
         <div class="grid grid-cols-5 gap-4">
             {
                 jobs.map((job, index) => (
                     <div class="relative flex flex-col items-center">
-                        <span class="text-xs text-gray-400 mb-4">
+                        <span class="text-xs text-gray-600 dark:text-gray-400 mb-4">
                             {job.startDate}
                         </span>
                         <TimelineDot isLatest={index === jobs.length - 1} />
@@ -73,7 +73,7 @@ const jobs = [
 
     <!-- Mobile: Vertical Timeline -->
     <div class="md:hidden relative">
-        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-500"></div>
+        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-500 dark:bg-gray-400"></div>
 
         <div class="space-y-4">
             {

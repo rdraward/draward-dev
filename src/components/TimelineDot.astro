@@ -11,8 +11,8 @@ const { isLatest, isMobile = false } = Astro.props;
     class:list={[
         "w-4 h-4 border-2",
         isLatest
-            ? "bg-[var(--dinosaur-color)] border-neutral-200"
-            : "bg-neutral-200 border-neutral-500",
+            ? "bg-[var(--dinosaur-color)] border-gray-200 dark:border-gray-300"
+            : "bg-gray-200 dark:bg-gray-300 border-gray-500 dark:border-gray-600",
         isMobile ? "absolute left-2" : "z-10",
     ]}
 >

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
 <!doctype html>
@@ -10,8 +11,49 @@ import "../styles/global.css";
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
         <title>Riley Draward</title>
+        <script is:inline>
+            // Theme initialization to prevent FOUC
+            (function() {
+                const THEME_STORAGE_KEY = 'theme-preference';
+                const THEME_CLASS = 'dark';
+                
+                function getSystemTheme() {
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                
+                function getStoredTheme() {
+                    try {
+                        return localStorage.getItem(THEME_STORAGE_KEY);
+                    } catch (error) {
+                        return null;
+                    }
+                }
+                
+                function resolveTheme(preference) {
+                    if (preference === 'system' || !preference) {
+                        return getSystemTheme();
+                    }
+                    return preference === 'dark' ? 'dark' : 'light';
+                }
+                
+                function applyTheme(theme) {
+                    const html = document.documentElement;
+                    if (theme === 'dark') {
+                        html.classList.add(THEME_CLASS);
+                    } else {
+                        html.classList.remove(THEME_CLASS);
+                    }
+                }
+                
+                const storedTheme = getStoredTheme();
+                const preference = storedTheme || 'system';
+                const resolvedTheme = resolveTheme(preference);
+                applyTheme(resolvedTheme);
+            })();
+        </script>
     </head>
-    <body class="bg-slate-800 text-neutral-100 font-body">
+    <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-body transition-colors duration-200">
+        <ThemeToggle />
         <slot />
     </body>
 </html>
