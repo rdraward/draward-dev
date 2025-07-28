@@ -30,25 +30,20 @@ links.sort((linkA, linkB) => {
 ---
 
 <main class="min-h-screen flex flex-col p-4 md:h-screen md:p-8">
-    <div
-        class="block md:hidden sticky top-0 z-10 p-4 border-b border-gray-200 dark:border-slate-700"
+    <a
+        href="/"
+        class="md:hidden absolute hover:text-slate-400 dark:hover:text-neutral-400"
+        aria-label="Go back home"
     >
-        <a
-            href="/"
-            class="flex items-center justify-center hover:text-gray-600 dark:hover:text-neutral-300"
-            aria-label="Go back home"
-        >
-            <HomeIcon class="w-6 h-6 mr-2" />
-            Go back
-        </a>
-    </div>
+        <HomeIcon class="w-6 h-6 mr-2" />
+    </a>
     <div
         class="flex flex-col md:flex-row items-center md:items-start pb-2 md:pb-12"
     >
         <div class="hidden md:flex w-48 justify-center">
             <a
                 href="/"
-                class="flex flex-col mt-5 items-center hover:text-gray-600 dark:hover:text-neutral-300"
+                class="flex flex-col mt-5 items-center hover:text-slate-400 dark:hover:text-neutral-400"
                 aria-label="Go back home"
             >
                 <HomeIcon class="w-6 h-6 pb-1" />
