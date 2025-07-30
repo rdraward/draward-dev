@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import SunIcon from "../assets/icons/sun.svg";
+import MoonIcon from "../assets/icons/moon.svg";
 ---
 
 <!doctype html>
@@ -11,7 +13,61 @@ import "../styles/global.css";
         <meta name="generator" content={Astro.generator} />
         <title>Riley Draward</title>
     </head>
-    <body class="bg-slate-800 text-neutral-100 font-body">
+    <body
+        class="bg-stone-200 dark:bg-slate-800 text-slate-700 dark:text-neutral-100 font-body transition-colors"
+    >
+        <button
+            id="theme-toggle"
+            class="pixel-corners !absolute right-2 top-2 rounded-lg text-[var(--dinosaur-color)] dark:text-[var(--space-invader-color)] transition-colors cursor-pointer"
+            aria-label="Toggle theme"
+        >
+            <SunIcon id="sun-icon" class="w-5 h-5 hidden dark:block" />
+            <MoonIcon id="moon-icon" class="w-5 h-5 block dark:hidden" />
+        </button>
+
         <slot />
+
+        <script is:inline>
+            function initTheme() {
+                const html = document.documentElement;
+
+                const savedTheme = localStorage.getItem("theme");
+                const systemPrefersDark = window.matchMedia(
+                    "(prefers-color-scheme: dark)",
+                ).matches;
+
+                if (
+                    savedTheme === "dark" ||
+                    (!savedTheme && systemPrefersDark)
+                ) {
+                    html.classList.add("dark");
+                }
+            }
+
+            function setupThemeToggle() {
+                const themeToggle = document.getElementById("theme-toggle");
+                const html = document.documentElement;
+
+                if (themeToggle) {
+                    themeToggle.addEventListener("click", () => {
+                        if (html.classList.contains("dark")) {
+                            html.classList.remove("dark");
+                            localStorage.setItem("theme", "light");
+                        } else {
+                            html.classList.add("dark");
+                            localStorage.setItem("theme", "dark");
+                        }
+                    });
+                }
+            }
+
+            initTheme();
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", setupThemeToggle);
+            } else {
+                setupThemeToggle();
+            }
+        </script>
     </body>
 </html>

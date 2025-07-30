@@ -30,25 +30,20 @@ links.sort((linkA, linkB) => {
 ---
 
 <main class="min-h-screen flex flex-col p-4 md:h-screen md:p-8">
-    <div
-        class="block md:hidden sticky top-0 z-10 p-4 border-b border-slate-700"
+    <a
+        href="/"
+        class="md:hidden absolute hover:text-slate-400 dark:hover:text-neutral-400"
+        aria-label="Go back home"
     >
-        <a
-            href="/"
-            class="flex items-center justify-center hover:text-neutral-300"
-            aria-label="Go back home"
-        >
-            <HomeIcon class="w-6 h-6 mr-2" />
-            Go back
-        </a>
-    </div>
+        <HomeIcon class="w-6 h-6 mr-2" />
+    </a>
     <div
         class="flex flex-col md:flex-row items-center md:items-start pb-2 md:pb-12"
     >
         <div class="hidden md:flex w-48 justify-center">
             <a
                 href="/"
-                class="flex flex-col mt-5 items-center hover:text-neutral-300"
+                class="flex flex-col mt-5 items-center hover:text-slate-400 dark:hover:text-neutral-400"
                 aria-label="Go back home"
             >
                 <HomeIcon class="w-6 h-6 pb-1" />
@@ -89,18 +84,20 @@ links.sort((linkA, linkB) => {
                 class="md:h-full md:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
                 <table class="w-full table-fixed">
-                    <thead class="bg-neutral-300 md:sticky md:top-0">
+                    <thead
+                        class="bg-gray-100 dark:bg-neutral-300 md:sticky md:top-0"
+                    >
                         <tr>
                             <th
-                                class="text-left p-2 md:p-4 text-lg md:text-xl font-semibold text-neutral-900 w-3/5"
+                                class="text-left p-2 md:p-4 text-lg md:text-xl font-semibold text-gray-900 dark:text-neutral-900 w-3/5"
                                 >Post</th
                             >
                             <th
-                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-neutral-900 w-1/5 hidden sm:table-cell"
+                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-gray-900 dark:text-neutral-900 w-1/5 hidden sm:table-cell"
                                 >Type</th
                             >
                             <th
-                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-neutral-900 w-1/5"
+                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold text-gray-900 dark:text-neutral-900 w-1/5"
                                 >Date</th
                             >
                         </tr>
@@ -109,7 +106,7 @@ links.sort((linkA, linkB) => {
                         {
                             links.map((item, index) => (
                                 <tr
-                                    class={`hover:bg-slate-600 transition-colors ${index % 2 === 0 ? "" : "bg-slate-700"} cursor-pointer`}
+                                    class={`hover:bg-gray-100 dark:hover:bg-slate-600 transition-colors ${index % 2 === 0 ? "" : "bg-gray-50 dark:bg-slate-700"} cursor-pointer`}
                                     onclick={`window.open('${item.data.url}', '_blank')`}
                                 >
                                     <td class="break-words p-2 relative">
@@ -121,12 +118,12 @@ links.sort((linkA, linkB) => {
                                         )}
                                     </td>
                                     <td class="text-center w-1/5 hidden sm:table-cell">
-                                        <span class="text-neutral-300 text-xs md:text-sm">
+                                        <span class="text-gray-600 dark:text-neutral-300 text-xs md:text-sm">
                                             {item.data.type}
                                         </span>
                                     </td>
                                     <td class="text-center w-1/5">
-                                        <span class="text-neutral-300 text-xs md:text-sm">
+                                        <span class="text-gray-600 dark:text-neutral-300 text-xs md:text-sm">
                                             {item.data.date}
                                         </span>
                                     </td>
