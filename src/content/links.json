@@ -438,5 +438,53 @@
     "type": "editorial",
     "date": "2025-07-15",
     "ghost": false
+  },
+  {
+    "id": "ea331bce-9278-4aad-aeb1-1c087669eed5",
+    "title": "Zero downtime Postgres upgrades using logical replication",
+    "url": "https://gadget.dev/blog/zero-downtime-postgres-upgrades-using-logical-replication",
+    "type": "learn",
+    "date": "2025-08-27",
+    "ghost": true
+  },
+  {
+    "id": "206abd39-9845-4bc8-bca3-ff8d1b1b6e47",
+    "title": "Introducing views in Gadget: Performant data queries",
+    "url": "https://gadget.dev/blog/introducing-views-in-gadget",
+    "type": "announcement",
+    "date": "2025-09-08",
+    "ghost": false
+  },
+  {
+    "id": "02fc29d8-85ba-40b5-b1f9-fab69203ccb1",
+    "title": "Sharding our core Postgres database (without any downtime)",
+    "url": "https://gadget.dev/blog/sharding-our-core-postgres-database-without-any-downtime",
+    "type": "learn",
+    "date": "2025-09-17",
+    "ghost": true
+  },
+  {
+    "id": "6206d158-3dc3-4c25-a1f6-b31c604291d5",
+    "title": "Shopify API 2025-10: Web components, Preact (and more checkout migrations)",
+    "url": "https://gadget.dev/blog/shopify-api-2025-10-web-components-preact",
+    "type": "editorial",
+    "date": "2025-10-02",
+    "ghost": false
+  },
+  {
+    "id": "67068f72-c446-40a2-98c4-088259127397",
+    "title": "Start building ChatGPT apps",
+    "url": "https://gadget.dev/blog/start-building-chatgpt-apps",
+    "type": "learn",
+    "date": "2025-10-08",
+    "ghost": false
+  },
+  {
+    "id": "3d9610a7-41af-4c44-882f-cee1b5893659",
+    "title": "How to: build your first ChatGPT app",
+    "url": "https://gadget.dev/blog/how-to-build-your-first-chatgpt-app",
+    "type": "guide",
+    "date": "2025-10-09",
+    "ghost": false
   }
 ]
