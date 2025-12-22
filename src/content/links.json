@@ -486,5 +486,29 @@
     "type": "guide",
     "date": "2025-10-09",
     "ghost": false
+  },
+  {
+    "id": "456268F5-0715-45AE-A58C-33E9F4C832DB",
+    "title": "Use Gadget's Preact hooks to build Shopify UI extensions",
+    "url": "https://gadget.dev/blog/use-gadgets-preact-hooks-to-build-shopify-ui-extensions",
+    "type": "guide",
+    "date": "2025-11-06",
+    "ghost": false
+  },
+  {
+    "id": "D406A9AD-9223-4A48-831E-F01F39F82101",
+    "title": "Gadget's BFCM 2025 (in numbers)",
+    "url": "https://gadget.dev/blog/gadgets-bfcm-2025-in-numbers",
+    "type": "editorial",
+    "date": "2025-12-02",
+    "ghost": true
+  },
+  {
+    "id": "683BFECC-0ACA-4829-8516-513D49383719",
+    "title": "Getting started with Shop Minis (and other mini apps!)",
+    "url": "https://gadget.dev/blog/getting-started-with-shop-minis-and-other-mini-apps",
+    "type": "editorial",
+    "date": "2025-12-04",
+    "ghost": false
   }
 ]
