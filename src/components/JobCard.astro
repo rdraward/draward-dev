@@ -19,12 +19,12 @@ const { title, company, logo, url, isMobile = false } = Astro.props;
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center"
+                class="flex items-center w-8 h-8"
             >
                 <Image
                     src={logo}
                     alt={`${company} logo`}
-                    class="w-8 h-8 rounded-lg mr-3 bg-neutral-100 p-1"
+                    class="rounded-lg mr-3 bg-neutral-100 p-1"
                 />
 
                 <div class="flex-1">
@@ -38,12 +38,11 @@ const { title, company, logo, url, isMobile = false } = Astro.props;
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="pixel-corners inline-block mb-3"
+                    class="pixel-corners inline-flex items-center content-center w-20 h-20 p-1"
                 >
                     <Image
                         src={logo}
                         alt={`${company} logo`}
-                        class="w-16 h-16 pixel-corners dark:bg-neutral-100"
                         loading="eager"
                     />
                 </a>
