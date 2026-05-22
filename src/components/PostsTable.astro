@@ -14,9 +14,9 @@ const { links } = Astro.props;
         <table class="stuff-table">
             <thead>
                 <tr>
-                    <th class="stuff-post-heading">Post</th>
-                    <th class="stuff-type-heading">Type</th>
-                    <th class="stuff-date-heading">Date</th>
+                    <th class="stuff-post-heading type-heading">Post</th>
+                    <th class="stuff-type-heading type-heading">Type</th>
+                    <th class="stuff-date-heading type-heading">Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@ const { links } = Astro.props;
                         <tr class="stuff-row">
                             <td class="stuff-post-cell">
                                 <a
-                                    class="stuff-post-title"
+                                    class="stuff-post-title type-body"
                                     href={item.data.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -36,10 +36,10 @@ const { links } = Astro.props;
                                     <GhostIcon class="stuff-ghost ghost-float" />
                                 )}
                             </td>
-                            <td class="stuff-type-cell">
+                            <td class="stuff-type-cell type-meta">
                                 <span>{item.data.type}</span>
                             </td>
-                            <td class="stuff-date-cell">
+                            <td class="stuff-date-cell type-meta">
                                 <span>{item.data.date}</span>
                             </td>
                         </tr>
@@ -101,8 +101,6 @@ const { links } = Astro.props;
     .stuff-type-heading,
     .stuff-date-heading {
         padding: 0.95rem 1rem;
-        font-size: 1rem;
-        font-weight: 700;
     }
 
     .stuff-post-heading {
@@ -148,7 +146,6 @@ const { links } = Astro.props;
     .stuff-post-title {
         flex: 1;
         min-width: 0;
-        font-weight: 700;
         color: inherit;
         text-decoration: none;
         word-break: break-word;
@@ -180,7 +177,6 @@ const { links } = Astro.props;
     .stuff-date-cell {
         padding: 0.85rem 0.65rem;
         color: rgb(71 85 105);
-        font-size: 0.85rem;
         text-align: center;
     }
 
@@ -201,7 +197,6 @@ const { links } = Astro.props;
         .stuff-post-heading,
         .stuff-date-heading {
             padding: 0.75rem 0.6rem;
-            font-size: 0.95rem;
         }
 
         .stuff-type-heading,
@@ -221,13 +216,8 @@ const { links } = Astro.props;
             padding: 0.75rem 0.6rem;
         }
 
-        .stuff-post-title {
-            font-size: 0.9rem;
-        }
-
         .stuff-date-cell {
             padding: 0.75rem 0.45rem;
-            font-size: 0.75rem;
         }
     }
 </style>

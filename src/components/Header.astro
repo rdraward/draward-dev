@@ -8,8 +8,8 @@ const { subtext } = Astro.props;
 
 <header class="site-header">
     <div class="site-title">
-        <h1>RILEY DRAWARD</h1>
-        <p>{subtext}</p>
+        <h1 class="type-display">RILEY DRAWARD</h1>
+        <p class="type-subtitle">{subtext}</p>
     </div>
     <div class="site-actions">
         <slot />
@@ -45,15 +45,10 @@ const { subtext } = Astro.props;
 
     .site-title h1 {
         margin: 0;
-        font-size: clamp(1.8rem, 5vw, 3.6rem);
-        font-weight: inherit;
-        line-height: 0.95;
     }
 
     .site-title p {
         margin: 0.45rem 0 0;
-        font-size: clamp(0.72rem, 2.1vw, 1.25rem);
-        line-height: 1.2;
     }
 
     /* Page-specific icons/buttons are slotted in here. The fixed height and
