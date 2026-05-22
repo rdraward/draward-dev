@@ -5,7 +5,7 @@ import GadgetLogo from "../assets/logos/gadget.png";
 ---
 
 <aside class="stuff-channels">
-    <h2>YouTube channels</h2>
+    <h2 class="type-section-title">YouTube channels</h2>
     <div class="stuff-channel-list">
         <a
             class="stuff-channel"
@@ -20,8 +20,12 @@ import GadgetLogo from "../assets/logos/gadget.png";
                 loading="eager"
             />
             <span class="stuff-channel-text">
-                <span class="stuff-channel-title">Learn with LEGO</span>
-                <span class="stuff-channel-company">Bits, Bytes and Bricks</span>
+                <span class="stuff-channel-title type-heading">
+                    Learn with LEGO
+                </span>
+                <span class="stuff-channel-company type-caption">
+                    Bits, Bytes and Bricks
+                </span>
             </span>
         </a>
         <a
@@ -37,8 +41,10 @@ import GadgetLogo from "../assets/logos/gadget.png";
                 loading="eager"
             />
             <span class="stuff-channel-text">
-                <span class="stuff-channel-title">Tutorials & Demos</span>
-                <span class="stuff-channel-company">Gadget</span>
+                <span class="stuff-channel-title type-heading">
+                    Tutorials & Demos
+                </span>
+                <span class="stuff-channel-company type-caption">Gadget</span>
             </span>
         </a>
     </div>
@@ -47,7 +53,7 @@ import GadgetLogo from "../assets/logos/gadget.png";
 <style>
     .stuff-channels {
         flex-shrink: 0;
-        width: 12rem;
+        width: 14rem;
         padding: 1rem 0.7rem;
         text-align: center;
         border: 3px solid var(--dinosaur-color);
@@ -64,8 +70,6 @@ import GadgetLogo from "../assets/logos/gadget.png";
     .stuff-channels h2 {
         margin: 0 0 1rem;
         color: var(--dinosaur-color);
-        font-size: 1.1rem;
-        line-height: 1.15;
     }
 
     :global(.dark) .stuff-channels h2 {
@@ -127,15 +131,6 @@ import GadgetLogo from "../assets/logos/gadget.png";
 
     :global(.dark) .stuff-channel-text {
         color: rgb(245 245 245);
-    }
-
-    .stuff-channel-title {
-        font-size: 0.875rem;
-        font-weight: 600;
-    }
-
-    .stuff-channel-company {
-        font-size: 0.75rem;
     }
 
     @media (max-width: 760px) {

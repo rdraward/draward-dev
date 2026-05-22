@@ -1,16 +1,25 @@
 <div id="arcade-start-panel" class="arcade-start-panel">
-    <button id="arcade-start" class="arcade-start" type="button">
+    <button
+        id="arcade-start"
+        class="arcade-start type-control-large"
+        type="button"
+    >
         START
     </button>
 </div>
 
 <div id="arcade-result-panel" class="arcade-result-panel" hidden>
-    <div id="arcade-result" class="arcade-result" role="status" aria-live="polite"></div>
+    <div
+        id="arcade-result"
+        class="arcade-result type-control-large"
+        role="status"
+        aria-live="polite"
+    ></div>
 </div>
 
 <button
     id="arcade-reset"
-    class="arcade-reset"
+    class="arcade-reset type-control"
     type="button"
 >
     RESET
@@ -37,8 +46,6 @@
         min-width: 10rem;
         padding: 0.85rem 1.35rem;
         color: var(--dinosaur-color);
-        font-size: 1.5rem;
-        line-height: 1;
         text-align: center;
         border: 3px solid currentColor;
         background: rgba(244, 239, 226, 0.94);
@@ -100,7 +107,6 @@
         place-items: center;
         padding: 0.5rem 0.85rem;
         color: var(--dinosaur-color);
-        line-height: 1;
         border: 2px solid currentColor;
         background: rgba(244, 239, 226, 0.94);
         box-shadow: 0 4px 0 rgba(210, 4, 45, 0.16);
@@ -133,9 +139,9 @@
 
     @media (max-width: 720px) {
         .arcade-reset {
+            --type-control-size: var(--type-caption-size);
             top: 9rem;
             padding: 0.4rem 0.6rem;
-            font-size: 0.75rem;
         }
     }
 </style>

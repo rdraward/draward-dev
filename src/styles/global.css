@@ -1,7 +1,28 @@
 :root {
     --space-invader-color: #a3e635;
     --dinosaur-color: #d2042d;
-    font-family: "Courier New", monospace;
+    --font-family-base: "Courier New", monospace;
+    --font-weight-base: 400;
+    --font-weight-strong: 700;
+    --type-display-size: clamp(1.8rem, 5vw, 3.6rem);
+    --type-display-line-height: 0.95;
+    --type-subtitle-size: clamp(0.72rem, 2.1vw, 1.25rem);
+    --type-subtitle-line-height: 1.2;
+    --type-section-title-size: 1.1rem;
+    --type-section-title-line-height: 1.15;
+    --type-heading-size: 1rem;
+    --type-heading-line-height: 1.15;
+    --type-body-size: 1rem;
+    --type-body-line-height: 1.4;
+    --type-meta-size: 0.85rem;
+    --type-meta-line-height: 1.3;
+    --type-caption-size: 0.75rem;
+    --type-caption-line-height: 1.25;
+    --type-control-size: 1rem;
+    --type-control-large-size: 1.5rem;
+    --type-control-line-height: 1;
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight-base);
 }
 
 *,
@@ -93,4 +114,58 @@ canvas {
 
 .ghost-float {
     animation: ghostFloat 5s linear infinite;
+}
+
+.type-display {
+    font-size: var(--type-display-size);
+    font-weight: var(--font-weight-base);
+    line-height: var(--type-display-line-height);
+}
+
+.type-subtitle {
+    font-size: var(--type-subtitle-size);
+    font-weight: var(--font-weight-base);
+    line-height: var(--type-subtitle-line-height);
+}
+
+.type-section-title {
+    font-size: var(--type-section-title-size);
+    font-weight: var(--font-weight-strong);
+    line-height: var(--type-section-title-line-height);
+}
+
+.type-heading {
+    font-size: var(--type-heading-size);
+    font-weight: var(--font-weight-strong);
+    line-height: var(--type-heading-line-height);
+}
+
+.type-body {
+    font-size: var(--type-body-size);
+    font-weight: var(--font-weight-base);
+    line-height: var(--type-body-line-height);
+}
+
+.type-meta {
+    font-size: var(--type-meta-size);
+    font-weight: var(--font-weight-base);
+    line-height: var(--type-meta-line-height);
+}
+
+.type-caption {
+    font-size: var(--type-caption-size);
+    font-weight: var(--font-weight-base);
+    line-height: var(--type-caption-line-height);
+}
+
+.type-control {
+    font-size: var(--type-control-size);
+    font-weight: var(--font-weight-base);
+    line-height: var(--type-control-line-height);
+}
+
+.type-control-large {
+    font-size: var(--type-control-large-size);
+    font-weight: var(--font-weight-base);
+    line-height: var(--type-control-line-height);
 }
