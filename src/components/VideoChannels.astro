@@ -1,0 +1,157 @@
+---
+import { Image } from "astro:assets";
+import BitsBytesBricksLogo from "../assets/logos/bits-bytes-bricks.png";
+import GadgetLogo from "../assets/logos/gadget.png";
+---
+
+<aside class="stuff-channels">
+    <h2>YouTube channels</h2>
+    <div class="stuff-channel-list">
+        <a
+            class="stuff-channel"
+            href="https://www.youtube.com/@BitsBytesAndBricks"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Image
+                class="stuff-channel-logo"
+                src={BitsBytesBricksLogo}
+                alt="Bits, Bytes and Bricks logo"
+                loading="eager"
+            />
+            <span class="stuff-channel-text">
+                <span class="stuff-channel-title">Learn with LEGO</span>
+                <span class="stuff-channel-company">Bits, Bytes and Bricks</span>
+            </span>
+        </a>
+        <a
+            class="stuff-channel"
+            href="https://www.youtube.com/@gadget_dev"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Image
+                class="stuff-channel-logo"
+                src={GadgetLogo}
+                alt="Gadget logo"
+                loading="eager"
+            />
+            <span class="stuff-channel-text">
+                <span class="stuff-channel-title">Tutorials & Demos</span>
+                <span class="stuff-channel-company">Gadget</span>
+            </span>
+        </a>
+    </div>
+</aside>
+
+<style>
+    .stuff-channels {
+        flex-shrink: 0;
+        width: 12rem;
+        padding: 1rem 0.7rem;
+        text-align: center;
+        border: 3px solid var(--dinosaur-color);
+        background: rgba(244, 239, 226, 0.9);
+        box-shadow: 0 7px 0 rgba(210, 4, 45, 0.14);
+    }
+
+    :global(.dark) .stuff-channels {
+        border-color: var(--space-invader-color);
+        background: rgba(8, 13, 21, 0.9);
+        box-shadow: 0 7px 0 rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-channels h2 {
+        margin: 0 0 1rem;
+        color: var(--dinosaur-color);
+        font-size: 1.1rem;
+        line-height: 1.15;
+    }
+
+    :global(.dark) .stuff-channels h2 {
+        color: var(--space-invader-color);
+    }
+
+    .stuff-channel-list {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .stuff-channel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 0.5rem;
+        color: var(--dinosaur-color);
+        text-decoration: none;
+        border: 2px solid transparent;
+        background: transparent;
+        transition:
+            background-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    .stuff-channel:hover,
+    .stuff-channel:focus-visible {
+        border-color: currentColor;
+        background: rgba(210, 4, 45, 0.1);
+        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.14);
+        outline: none;
+    }
+
+    :global(.dark) .stuff-channel {
+        color: var(--space-invader-color);
+    }
+
+    :global(.dark) .stuff-channel:hover,
+    :global(.dark) .stuff-channel:focus-visible {
+        background: rgba(163, 230, 53, 0.12);
+        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-channel-logo {
+        width: 4rem;
+        height: 4rem;
+        background: transparent;
+    }
+
+    .stuff-channel-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        color: rgb(15 23 42);
+    }
+
+    :global(.dark) .stuff-channel-text {
+        color: rgb(245 245 245);
+    }
+
+    .stuff-channel-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .stuff-channel-company {
+        font-size: 0.75rem;
+    }
+
+    @media (max-width: 760px) {
+        .stuff-channels {
+            width: auto;
+            padding: 0.85rem;
+        }
+
+        .stuff-channels h2 {
+            margin-bottom: 0.65rem;
+        }
+
+        .stuff-channel-list {
+            flex-direction: row;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+    }
+</style>

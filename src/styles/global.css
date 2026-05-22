@@ -1,10 +1,79 @@
-@import "tailwindcss";
-
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
     --space-invader-color: #a3e635;
     --dinosaur-color: #d2042d;
+    font-family: "Courier New", monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+}
+
+html {
+    color: rgb(15 23 42);
+    background: #f4efe2;
+}
+
+html.dark {
+    color: rgb(245 245 245);
+    background: #080d15;
+}
+
+body {
+    min-width: 320px;
+    margin: 0;
+    color: inherit;
+    background: inherit;
+    transition:
+        background-color 160ms ease,
+        color 160ms ease;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    line-height: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+}
+
+button {
+    background: transparent;
+    border-radius: 0;
+    appearance: button;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+table {
+    border-collapse: collapse;
+    border-color: inherit;
+    text-indent: 0;
+}
+
+img,
+svg,
+canvas {
+    display: block;
 }
 
 @keyframes ghostFloat {
@@ -24,8 +93,4 @@
 
 .ghost-float {
     animation: ghostFloat 5s linear infinite;
-}
-
-@theme {
-    --font-sans: "Courier New", "monospace";
 }
