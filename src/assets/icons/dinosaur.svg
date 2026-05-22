@@ -1,0 +1,9 @@
+<svg
+    fill="currentColor"
+    viewBox="0 0 30 12"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M0 0h1v1H0zM23 0h6v1h-6zM0 1h2v1H0zM22 1h3v1h-3zM26 1h3v1h-3zM1 2h2v1H1zM20 2h9v1h-9zM2 3h3v1H2zM18 3h3v1h-3zM3 4h4v1H3zM17 4h6v1h-6zM5 5h18v1H5zM8 6h17v1H8zM10 7h11v1H10zM12 8h7v1h-7zM12 9h2v1h-2zM17 9h2v1h-2zM12 10h2v1h-2zM17 10h4v1h-4zM11 11h4v1h-4z"
+    />
+</svg>

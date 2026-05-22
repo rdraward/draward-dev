@@ -112,14 +112,6 @@
     "ghost": false
   },
   {
-    "id": "0da48d4f-9cfb-4c0a-ae04-b77c7ca0131b",
-    "title": "Introducing collaborative development on Gadget",
-    "url": "https://gadget.dev/blog/introducing-collaborative-development-on-gadget",
-    "type": "announcement",
-    "date": "2022-09-06",
-    "ghost": false
-  },
-  {
     "id": "d9abd869-df15-40e3-afb5-c6c670c1eaa8",
     "title": "Optimize web performance with cached HTTP route responses",
     "url": "https://gadget.dev/blog/cache-http-route-responses-in-the-browser-and-on-gadgets-cdn",
@@ -229,14 +221,6 @@
     "url": "https://gadget.dev/blog/pre-purchase-checkout-ui-extension",
     "type": "guide",
     "date": "2023-04-28",
-    "ghost": false
-  },
-  {
-    "id": "886506b2-7d8f-40af-9e36-7889c052cb66",
-    "title": "Build a product recommendation chatbot for a Shopify store using OpenAI and Gadget",
-    "url": "https://gadget.dev/blog/build-a-product-recommendation-chatbot-for-a-shopify-store-using-openai-and-gadget",
-    "type": "guide",
-    "date": "2023-05-12",
     "ghost": false
   },
   {
@@ -488,7 +472,7 @@
     "ghost": false
   },
   {
-    "id": "456268F5-0715-45AE-A58C-33E9F4C832DB",
+    "id": "4333fab9-8f12-41fb-9c22-bc16f9385047",
     "title": "Use Gadget's Preact hooks to build Shopify UI extensions",
     "url": "https://gadget.dev/blog/use-gadgets-preact-hooks-to-build-shopify-ui-extensions",
     "type": "guide",
@@ -496,7 +480,7 @@
     "ghost": false
   },
   {
-    "id": "D406A9AD-9223-4A48-831E-F01F39F82101",
+    "id": "a8c38ff5-71de-4ddd-96bc-cd3c7fd9d04a",
     "title": "Gadget's BFCM 2025 (in numbers)",
     "url": "https://gadget.dev/blog/gadgets-bfcm-2025-in-numbers",
     "type": "editorial",
@@ -510,5 +494,37 @@
     "type": "editorial",
     "date": "2025-12-04",
     "ghost": false
+  },
+  {
+    "id": "d35d1a7d-efc3-4539-9ebe-28002b5b1f9d",
+    "title": "Diagnose issues in production and development, with the operations dashboard",
+    "url": "https://gadget.dev/blog/diagnose-issues-with-the-operations-dashboard",
+    "type": "announcement",
+    "date": "2026-01-16",
+    "ghost": false
+  },
+  {
+    "id": "502ea2d8-6af5-46ed-9a11-44117bfd6226",
+    "title": "We ran vinext (Next.js on Vite) inside a Gadget app",
+    "url": "https://gadget.dev/blog/we-ran-vinext-next-js-on-vite-inside-a-gadget-app",
+    "type": "editorial",
+    "date": "2026-03-09",
+    "ghost": false
+  },
+  {
+    "id": "b50c6bcc-fdc8-4df4-bd30-5db8e4d6602e",
+    "title": "In Gadget framework v1.7.0, Shopify TOML becomes the source of truth for your app",
+    "url": "https://gadget.dev/blog/in-gadget-framework-v1-7-0-shopify-toml-becomes-the-source-of-truth-for-your-app",
+    "type": "editorial",
+    "date": "2026-03-25",
+    "ghost": false
+  },
+  {
+    "id": "53abcc09-7443-46b7-82d4-ea89dbaa4087",
+    "title": "We set out to save money on observability. Instead, we (accidentally) rebuilt our incident response workflow",
+    "url": "https://gadget.dev/blog/how-we-accidentally-rebuilt-our-incident-response-workflow",
+    "type": "editorial",
+    "date": "2026-03-25",
+    "ghost": true
   }
 ]

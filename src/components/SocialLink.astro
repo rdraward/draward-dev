@@ -1,6 +1,4 @@
 ---
-import "../styles/pixel-corners.css";
-
 interface Props {
     href: string;
     name: string;
@@ -11,12 +9,43 @@ const { href, name, target } = Astro.props;
 ---
 
 <a
-    class="mx-auto text-center transition-colors duration-200 pixel-corners"
+    class="social-link"
     href={href}
     target={target || "_blank"}
     aria-label={name}
 >
-    <button class="p-2 cursor-pointer">
-        <slot />
-    </button>
+    <slot />
 </a>
+
+<style>
+    .social-link {
+        display: inline-grid;
+        place-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--dinosaur-color);
+        border: 2px solid transparent;
+        background: transparent;
+        transition:
+            background-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+        border-color: currentColor;
+        background: rgba(210, 4, 45, 0.1);
+        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.14);
+        outline: none;
+    }
+
+    :global(.dark) .social-link {
+        color: var(--space-invader-color);
+    }
+
+    :global(.dark) .social-link:hover,
+    :global(.dark) .social-link:focus-visible {
+        background: rgba(163, 230, 53, 0.12);
+        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.12);
+    }
+</style>

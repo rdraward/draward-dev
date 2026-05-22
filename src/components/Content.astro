@@ -1,129 +1,105 @@
 ---
-import "../styles/pixel-corners.css";
-import JobCard from "./JobCard.astro";
+import { Image } from "astro:assets";
+import Header from "./Header.astro";
+import SocialLinks from "./SocialLinks.astro";
 import GadgetLogo from "../assets/logos/gadget.png";
 import BitsBytesBricksLogo from "../assets/logos/bits-bytes-bricks.png";
 import HomeIcon from "../assets/icons/home.svg";
 import GhostIcon from "../assets/icons/ghost.svg";
 import { getCollection } from "astro:content";
 
-interface Link {
-    data: {
-        title: string;
-        date: string;
-        url: string;
-        type:
-            | "case study"
-            | "lighthearted"
-            | "editorial"
-            | "guide"
-            | "learn"
-            | "announcement";
-        ghost: boolean;
-    };
-}
-
-const links: Link[] = await getCollection("links");
-links.sort((linkA, linkB) => {
-    return linkB.data.date.localeCompare(linkA.data.date);
-});
+const links = await getCollection("links");
+links.sort((linkA, linkB) => linkB.data.date.localeCompare(linkA.data.date));
 ---
 
-<main class="min-h-screen flex flex-col p-4 md:h-screen md:p-8">
-    <a
-        href="/"
-        class="md:hidden absolute hover:text-slate-400 dark:hover:text-neutral-400"
-        aria-label="Go back home"
-    >
-        <HomeIcon class="w-6 h-6 mr-2" />
-    </a>
-    <div
-        class="flex flex-col md:flex-row items-center md:items-start pb-2 md:pb-12"
-    >
-        <div class="hidden md:flex w-48 justify-center">
+<main class="stuff-site">
+    <Header subtext="Blog posts & videos">
+        <SocialLinks>
             <a
                 href="/"
-                class="flex flex-col mt-5 items-center hover:text-slate-400 dark:hover:text-neutral-400"
+                class="stuff-back-link"
                 aria-label="Go back home"
             >
-                <HomeIcon class="w-6 h-6 pb-1" />
-                Go back
+                <HomeIcon class="w-6 h-6" />
             </a>
-        </div>
-        <div class="flex-1 flex-col text-center pt-4 md:pt-0">
-            <h1 class="text-4xl md:p-2">Blog posts</h1>
-            <h2 class="text-2xl">(plus, videos)</h2>
-        </div>
-    </div>
-    <div
-        class="flex flex-col md:flex-row relative gap-4 md:gap-8 flex-1 md:overflow-hidden"
-    >
-        <div class="md:w-48 flex flex-col items-center">
-            <h2
-                class="text-xl font-semibold p-4 pb-2 md:pb-4 text-center order-first md:order-none"
-            >
-                YouTube channels
-            </h2>
-            <div class="flex md:flex-col">
-                <JobCard
-                    title="Learn with LEGO"
-                    company="Bits, Bytes and Bricks"
-                    logo={BitsBytesBricksLogo}
-                    url="https://www.youtube.com/@BitsBytesAndBricks"
-                />
-                <JobCard
-                    title="Tutorials & Demos"
-                    company="Gadget"
-                    logo={GadgetLogo}
-                    url="https://www.youtube.com/@gadget_dev"
-                />
+        </SocialLinks>
+    </Header>
+    <div class="stuff-layout">
+        <aside class="stuff-channels">
+            <h2>YouTube channels</h2>
+            <div class="stuff-channel-list">
+                <a
+                    class="stuff-channel"
+                    href="https://www.youtube.com/@BitsBytesAndBricks"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Image
+                        class="stuff-channel-logo"
+                        src={BitsBytesBricksLogo}
+                        alt="Bits, Bytes and Bricks logo"
+                        loading="eager"
+                    />
+                    <span class="stuff-channel-text">
+                        <span class="stuff-channel-title">Learn with LEGO</span>
+                        <span class="stuff-channel-company">
+                            Bits, Bytes and Bricks
+                        </span>
+                    </span>
+                </a>
+                <a
+                    class="stuff-channel"
+                    href="https://www.youtube.com/@gadget_dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Image
+                        class="stuff-channel-logo"
+                        src={GadgetLogo}
+                        alt="Gadget logo"
+                        loading="eager"
+                    />
+                    <span class="stuff-channel-text">
+                        <span class="stuff-channel-title">Tutorials & Demos</span>
+                        <span class="stuff-channel-company">Gadget</span>
+                    </span>
+                </a>
             </div>
-        </div>
-        <div class="flex-1 p-2">
-            <div
-                class="md:h-full md:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-            >
-                <table class="w-full table-fixed">
-                    <thead
-                        class="md:sticky md:top-0 z-10 bg-white dark:bg-neutral-900 border-b-2 border-gray-300 dark:border-neutral-600"
-                    >
+        </aside>
+        <section class="stuff-posts" aria-label="Posts">
+            <div class="stuff-scroll">
+                <table class="stuff-table">
+                    <thead>
                         <tr>
-                            <th
-                                class="text-left p-2 md:p-4 text-lg md:text-xl font-semibold w-3/5"
-                                >Post</th
-                            >
-                            <th
-                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold w-1/5 hidden sm:table-cell"
-                                >Type</th
-                            >
-                            <th
-                                class="text-center p-2 md:p-4 text-sm md:text-lg font-semibold w-1/5"
-                                >Date</th
-                            >
+                            <th class="stuff-post-heading">Post</th>
+                            <th class="stuff-type-heading">Type</th>
+                            <th class="stuff-date-heading">Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            links.map((item, index) => (
-                                <tr
-                                    class="hover:bg-gray-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer border-b border-gray-200 dark:border-neutral-700"
-                                    onclick={`window.open('${item.data.url}', '_blank')`}
-                                >
-                                    <td class="break-words p-2 relative">
-                                        <span class="font-medium">
+                            links.map((item) => (
+                                <tr class="stuff-row">
+                                    <td class="stuff-post-cell">
+                                        <a
+                                            class="stuff-post-title"
+                                            href={item.data.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             {item.data.title}
-                                        </span>
+                                        </a>
                                         {item.data.ghost && (
-                                            <GhostIcon class="absolute w-5 h-5 opacity-60 ghost-float right-[-4px] top-1/2 -translate-y-1/2" />
+                                            <GhostIcon class="stuff-ghost ghost-float" />
                                         )}
                                     </td>
-                                    <td class="text-center w-1/5 hidden sm:table-cell">
-                                        <span class="text-gray-600 dark:text-neutral-300 text-xs md:text-sm">
+                                    <td class="stuff-type-cell">
+                                        <span>
                                             {item.data.type}
                                         </span>
                                     </td>
-                                    <td class="text-center w-1/5">
-                                        <span class="text-gray-600 dark:text-neutral-300 text-xs md:text-sm">
+                                    <td class="stuff-date-cell">
+                                        <span>
                                             {item.data.date}
                                         </span>
                                     </td>
@@ -133,6 +109,368 @@ links.sort((linkA, linkB) => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </section>
     </div>
 </main>
+
+<style>
+    .stuff-site {
+        --stuff-light-bg: #f4efe2;
+        --stuff-dark-bg: #080d15;
+        --stuff-light-line: rgba(210, 4, 45, 0.28);
+        --stuff-dark-line: rgba(163, 230, 53, 0.26);
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+        color: rgb(15 23 42);
+        background:
+            linear-gradient(var(--stuff-light-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--stuff-light-line) 1px, transparent 1px),
+            var(--stuff-light-bg);
+        background-size: 2rem 2rem;
+    }
+
+    :global(.dark) .stuff-site {
+        color: rgb(245 245 245);
+        background:
+            linear-gradient(var(--stuff-dark-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--stuff-dark-line) 1px, transparent 1px),
+            var(--stuff-dark-bg);
+        background-size: 2rem 2rem;
+    }
+
+    .stuff-back-link {
+        display: inline-grid;
+        place-items: center;
+        box-sizing: border-box;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--dinosaur-color);
+        border: 2px solid transparent;
+        background: transparent;
+        transition:
+            background-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    .stuff-back-link:hover,
+    .stuff-back-link:focus-visible {
+        border-color: currentColor;
+        background: rgba(210, 4, 45, 0.1);
+        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.14);
+        outline: none;
+    }
+
+    :global(.dark) .stuff-back-link {
+        color: var(--space-invader-color);
+    }
+
+    :global(.dark) .stuff-back-link:hover,
+    :global(.dark) .stuff-back-link:focus-visible {
+        background: rgba(163, 230, 53, 0.12);
+        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-layout {
+        display: flex;
+        flex: 1;
+        gap: 1.5rem;
+        min-height: 0;
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    .stuff-channels,
+    .stuff-posts {
+        border: 3px solid var(--dinosaur-color);
+        background: rgba(244, 239, 226, 0.9);
+        box-shadow: 0 7px 0 rgba(210, 4, 45, 0.14);
+    }
+
+    :global(.dark) .stuff-channels,
+    :global(.dark) .stuff-posts {
+        border-color: var(--space-invader-color);
+        background: rgba(8, 13, 21, 0.9);
+        box-shadow: 0 7px 0 rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-channels {
+        width: 12rem;
+        flex-shrink: 0;
+        padding: 1rem 0.7rem;
+        text-align: center;
+    }
+
+    .stuff-channels h2 {
+        margin: 0 0 1rem;
+        color: var(--dinosaur-color);
+        font-size: 1.1rem;
+        line-height: 1.15;
+    }
+
+    :global(.dark) .stuff-channels h2 {
+        color: var(--space-invader-color);
+    }
+
+    .stuff-channel-list {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .stuff-channel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 0.5rem;
+        color: var(--dinosaur-color);
+        border: 2px solid transparent;
+        background: transparent;
+        transition:
+            background-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    .stuff-channel:hover,
+    .stuff-channel:focus-visible {
+        border-color: currentColor;
+        background: rgba(210, 4, 45, 0.1);
+        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.14);
+        outline: none;
+    }
+
+    :global(.dark) .stuff-channel {
+        color: var(--space-invader-color);
+    }
+
+    :global(.dark) .stuff-channel:hover,
+    :global(.dark) .stuff-channel:focus-visible {
+        background: rgba(163, 230, 53, 0.12);
+        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-channel-logo {
+        width: 4rem;
+        height: 4rem;
+        background: transparent;
+    }
+
+    .stuff-channel-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        color: rgb(15 23 42);
+    }
+
+    :global(.dark) .stuff-channel-text {
+        color: rgb(245 245 245);
+    }
+
+    .stuff-channel-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .stuff-channel-company {
+        font-size: 0.75rem;
+    }
+
+    .stuff-posts {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .stuff-scroll {
+        height: 100%;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .stuff-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .stuff-table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+
+    .stuff-table thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        color: var(--dinosaur-color);
+        background: rgb(244 239 226);
+        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.2);
+    }
+
+    :global(.dark) .stuff-table thead {
+        color: var(--space-invader-color);
+        background: rgb(8 13 21);
+        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.18);
+    }
+
+    .stuff-post-heading,
+    .stuff-type-heading,
+    .stuff-date-heading {
+        padding: 0.95rem 1rem;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .stuff-post-heading {
+        width: 60%;
+        text-align: left;
+    }
+
+    .stuff-type-heading,
+    .stuff-date-heading {
+        width: 20%;
+        text-align: center;
+    }
+
+    .stuff-row {
+        position: relative;
+        border-bottom: 1px solid rgba(210, 4, 45, 0.2);
+        transition:
+            background-color 160ms ease,
+            color 160ms ease;
+    }
+
+    .stuff-row:hover,
+    .stuff-row:focus-within {
+        background: rgba(210, 4, 45, 0.1);
+    }
+
+    :global(.dark) .stuff-row {
+        border-bottom-color: rgba(163, 230, 53, 0.2);
+    }
+
+    :global(.dark) .stuff-row:hover,
+    :global(.dark) .stuff-row:focus-within {
+        background: rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-post-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .stuff-post-title {
+        flex: 1;
+        min-width: 0;
+        font-weight: 700;
+        color: inherit;
+        text-decoration: none;
+        word-break: break-word;
+    }
+
+    /* Stretch the link over the whole row so a click anywhere in the row
+       navigates, while keeping a real, focusable anchor for keyboard and
+       screen-reader users. */
+    .stuff-post-title::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+
+    .stuff-post-title:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: -2px;
+    }
+
+    .stuff-ghost {
+        position: relative;
+        flex-shrink: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        opacity: 0.7;
+    }
+
+    .stuff-type-cell,
+    .stuff-date-cell {
+        padding: 0.85rem 0.65rem;
+        color: rgb(71 85 105);
+        font-size: 0.85rem;
+        text-align: center;
+    }
+
+    :global(.dark) .stuff-type-cell,
+    :global(.dark) .stuff-date-cell {
+        color: rgb(203 213 225);
+    }
+
+    @media (max-width: 760px) {
+        .stuff-layout {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 0.75rem 0.75rem;
+        }
+
+        .stuff-channels {
+            width: auto;
+            padding: 0.85rem;
+        }
+
+        .stuff-channels h2 {
+            margin-bottom: 0.65rem;
+        }
+
+        .stuff-channel-list {
+            flex-direction: row;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .stuff-posts {
+            overflow: visible;
+        }
+
+        .stuff-scroll {
+            overflow: visible;
+        }
+
+        .stuff-post-heading,
+        .stuff-date-heading {
+            padding: 0.75rem 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .stuff-type-heading,
+        .stuff-type-cell {
+            display: none;
+        }
+
+        .stuff-post-heading {
+            width: 68%;
+        }
+
+        .stuff-date-heading {
+            width: 32%;
+        }
+
+        .stuff-post-cell {
+            padding: 0.75rem 0.6rem;
+        }
+
+        .stuff-post-title {
+            font-size: 0.9rem;
+        }
+
+        .stuff-date-cell {
+            padding: 0.75rem 0.45rem;
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (min-width: 761px) {
+        .stuff-site {
+            height: 100dvh;
+        }
+    }
+</style>

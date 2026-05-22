@@ -1,0 +1,40 @@
+---
+import SocialLink from "./SocialLink.astro";
+import GitHubIcon from "../assets/icons/github.svg";
+import LinkedInIcon from "../assets/icons/linkedin.svg";
+import BlueskyIcon from "../assets/icons/bluesky.svg";
+import YouTubeIcon from "../assets/icons/youtube.svg";
+---
+
+<div class="social-links" aria-label="Links">
+    <SocialLink href="https://github.com/rdraward" name="GitHub">
+        <GitHubIcon width={22} />
+    </SocialLink>
+    <SocialLink
+        href="https://www.linkedin.com/in/riley-draward"
+        name="LinkedIn"
+    >
+        <LinkedInIcon width={22} />
+    </SocialLink>
+    <SocialLink href="https://bsky.app/profile/draward.dev" name="Bluesky">
+        <BlueskyIcon width={22} />
+    </SocialLink>
+    <SocialLink href="https://www.youtube.com/@BitsBytesAndBricks" name="YouTube">
+        <YouTubeIcon width={22} />
+    </SocialLink>
+    <slot />
+</div>
+
+<style>
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    @media (max-width: 720px) {
+        .social-links {
+            gap: 0;
+        }
+    }
+</style>

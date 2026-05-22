@@ -1,49 +1,852 @@
 ---
+import Header from "./Header.astro";
 import SocialLink from "./SocialLink.astro";
-import GitHubIcon from "../assets/icons/github.svg";
-import LinkedInIcon from "../assets/icons/linkedin.svg";
-import BlueskyIcon from "../assets/icons/bluesky.svg";
+import SocialLinks from "./SocialLinks.astro";
 import BlogIcon from "../assets/icons/blog.svg";
-import YouTubeIcon from "../assets/icons/youtube.svg";
 ---
 
-<main class="min-h-screen flex flex-col flex-auto">
-    <div class="dinosaur mx-auto grow-0"></div>
-    <div
-        class="flex flex-col justify-center items-center grow pt-4 px-6 md:px-0"
-    >
-        <h1 class="text-6xl text-center">RILEY DRAWARD</h1>
-        <p class="mt-3 text-2xl text-center">
-            Software Engineer & Developer Advocate
-        </p>
-        <div class="mt-3 flex justify-center items-center">
-            <div class="flex flex-row gap-4">
-                <SocialLink href="https://github.com/rdraward" name="GitHub">
-                    <GitHubIcon width={24} />
-                </SocialLink>
-                <SocialLink
-                    href="https://www.linkedin.com/in/riley-draward"
-                    name="LinkedIn"
-                >
-                    <LinkedInIcon width={24} />
-                </SocialLink>
-                <SocialLink
-                    href="https://bsky.app/profile/draward.dev"
-                    name="Bluesky"
-                >
-                    <BlueskyIcon width={24} />
-                </SocialLink>
-                <SocialLink
-                    href="https://www.youtube.com/@BitsBytesAndBricks"
-                    name="YouTube"
-                >
-                    <YouTubeIcon width={24} />
-                </SocialLink>
-                <SocialLink href="/stuff" name="My stuff" target="_self">
-                    <BlogIcon width={24} />
-                </SocialLink>
-            </div>
-        </div>
+<main class="arcade-site" aria-label="Riley Draward arcade home">
+    <canvas
+        id="arcade-canvas"
+        class="arcade-canvas"
+        aria-label="Playable arcade game"
+    ></canvas>
+
+    <div id="arcade-start-panel" class="arcade-start-panel">
+        <button id="arcade-start" class="arcade-start" type="button">
+            START
+        </button>
     </div>
-    <div class="space-invader mx-auto"></div>
+
+    <div id="arcade-result-panel" class="arcade-result-panel" hidden>
+        <div id="arcade-result" class="arcade-result" role="status" aria-live="polite"></div>
+    </div>
+
+    <Header subtext="Software engineer & developer advocate">
+        <SocialLinks>
+            <SocialLink href="/stuff" name="My stuff" target="_self">
+                <BlogIcon width={22} />
+            </SocialLink>
+        </SocialLinks>
+    </Header>
+
+    <button
+        id="arcade-reset"
+        class="arcade-reset"
+        type="button"
+    >
+        RESET
+    </button>
+
 </main>
+
+<style>
+    .arcade-site {
+        --game-space-bg: #080d15;
+        --game-space-grid: rgba(163, 230, 53, 0.18);
+        --game-dino-bg: #f4efe2;
+        --game-dino-grid: rgba(210, 4, 45, 0.16);
+        position: relative;
+        min-height: 100dvh;
+        overflow: hidden;
+        color: rgb(15 23 42);
+        background: var(--game-dino-bg);
+    }
+
+    :global(#theme-toggle) {
+        z-index: 4;
+    }
+
+    :global(.dark) .arcade-site {
+        color: rgb(245 245 245);
+        background: var(--game-space-bg);
+    }
+
+    .arcade-canvas {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        cursor: crosshair;
+    }
+
+    .arcade-start-panel,
+    .arcade-result-panel {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+    }
+
+    .arcade-start-panel[hidden],
+    .arcade-result-panel[hidden] {
+        display: none;
+    }
+
+    .arcade-start,
+    .arcade-result {
+        min-width: 10rem;
+        padding: 0.85rem 1.35rem;
+        color: var(--dinosaur-color);
+        font-size: 1.5rem;
+        line-height: 1;
+        border: 3px solid currentColor;
+        background: rgba(244, 239, 226, 0.94);
+        box-shadow: 0 7px 0 rgba(210, 4, 45, 0.18);
+        text-align: center;
+    }
+
+    .arcade-start {
+        cursor: pointer;
+        pointer-events: auto;
+        transition:
+            transform 120ms ease,
+            background-color 160ms ease,
+            box-shadow 160ms ease;
+    }
+
+    .arcade-start:hover,
+    .arcade-start:focus-visible {
+        background: rgb(244, 239, 226);
+        box-shadow: 0 9px 0 rgba(210, 4, 45, 0.22);
+        outline: none;
+        transform: translateY(-2px);
+    }
+
+    .arcade-start:active {
+        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.2);
+        transform: translateY(3px);
+    }
+
+    .arcade-result {
+        pointer-events: none;
+    }
+
+    :global(.dark) .arcade-start,
+    :global(.dark) .arcade-result {
+        color: var(--space-invader-color);
+        background: rgba(8, 13, 21, 0.94);
+        box-shadow: 0 7px 0 rgba(163, 230, 53, 0.14);
+    }
+
+    :global(.dark) .arcade-start:hover,
+    :global(.dark) .arcade-start:focus-visible {
+        background: rgb(8, 13, 21);
+        box-shadow: 0 9px 0 rgba(163, 230, 53, 0.18);
+    }
+
+    :global(.dark) .arcade-start:active {
+        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.16);
+    }
+
+    /* Floats over the top-right of the canvas, just below the header. The
+       `top` value is a pre-paint fallback; resize() in the game script sets
+       it precisely from the header's measured height. */
+    .arcade-reset {
+        position: absolute;
+        top: 6.5rem;
+        right: 1rem;
+        z-index: 3;
+        display: inline-grid;
+        place-items: center;
+        box-sizing: border-box;
+        padding: 0.5rem 0.85rem;
+        color: var(--dinosaur-color);
+        border: 2px solid currentColor;
+        background: rgba(244, 239, 226, 0.94);
+        box-shadow: 0 4px 0 rgba(210, 4, 45, 0.16);
+        cursor: pointer;
+        transition:
+            background-color 160ms ease,
+            box-shadow 160ms ease,
+            transform 120ms ease;
+    }
+
+    .arcade-reset:hover,
+    .arcade-reset:focus-visible {
+        background: rgb(244, 239, 226);
+        box-shadow: 0 6px 0 rgba(210, 4, 45, 0.2);
+        outline: none;
+        transform: translateY(-1px);
+    }
+
+    :global(.dark) .arcade-reset {
+        color: var(--space-invader-color);
+        background: rgba(8, 13, 21, 0.94);
+        box-shadow: 0 4px 0 rgba(163, 230, 53, 0.14);
+    }
+
+    :global(.dark) .arcade-reset:hover,
+    :global(.dark) .arcade-reset:focus-visible {
+        background: rgb(8, 13, 21);
+        box-shadow: 0 6px 0 rgba(163, 230, 53, 0.18);
+    }
+
+    @media (max-width: 720px) {
+        .arcade-reset {
+            top: 9rem;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.75rem;
+        }
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById("arcade-canvas");
+    const context = canvas instanceof HTMLCanvasElement ? canvas.getContext("2d") : null;
+    const startPanel = document.getElementById("arcade-start-panel");
+    const startButton = document.getElementById("arcade-start");
+    const resultPanel = document.getElementById("arcade-result-panel");
+    const resultText = document.getElementById("arcade-result");
+    const resetButton = document.getElementById("arcade-reset");
+
+    if (canvas && context) {
+        const invaderSprite = [
+            "00100100",
+            "01111110",
+            "11011011",
+            "11111111",
+            "01111110",
+            "01000010",
+            "10000001",
+        ];
+
+        const dinoSprite = [
+            "100000000000000000000001111110",
+            "110000000000000000000011101110",
+            "011000000000000000001111111110",
+            "001110000000000000111000000000",
+            "000111100000000001111110000000",
+            "000001111111111111111110000000",
+            "000000001111111111111111100000",
+            "000000000011111111111000000000",
+            "000000000000111111100000000000",
+            "000000000000110001100000000000",
+            "000000000000110001111000000000",
+            "000000000001111000000000000000",
+        ];
+
+        const shipSprite = [
+            "0001000",
+            "0011100",
+            "0111110",
+            "1111111",
+            "1011101",
+        ];
+
+        const runnerSprite = [
+            "001100",
+            "001000",
+            "111110",
+            "011000",
+            "010100",
+            "100010",
+        ];
+
+        const state = {
+            width: 0,
+            height: 0,
+            dpr: 1,
+            playerX: 0,
+            playerY: 0,
+            playerWidth: 42,
+            playerHeight: 30,
+            keys: new Set(),
+            bullets: [],
+            creatures: [],
+            particles: [],
+            lastShotAt: 0,
+            lastFrameAt: 0,
+            started: false,
+            won: false,
+            lost: false,
+            theme: "",
+            uiBottom: 120,
+            creatureDirection: 1,
+            creatureOffsetX: 0,
+            creatureOffsetY: 0,
+            creatureStepTimer: 0,
+        };
+
+        const palettes = {
+            space: {
+                bg: "#080d15",
+                fg: "#a3e635",
+                alt: "#38bdf8",
+                danger: "#f97316",
+                panel: "rgba(163, 230, 53, 0.18)",
+            },
+            dinosaur: {
+                bg: "#f4efe2",
+                fg: "#d2042d",
+                alt: "#2563eb",
+                danger: "#f59e0b",
+                panel: "rgba(210, 4, 45, 0.16)",
+            },
+        };
+
+        function currentTheme() {
+            return document.documentElement.classList.contains("dark")
+                ? "space"
+                : "dinosaur";
+        }
+
+        function getCreatureSprite() {
+            return state.theme === "space" ? invaderSprite : dinoSprite;
+        }
+
+        function getPlayerSprite() {
+            return state.theme === "space" ? shipSprite : runnerSprite;
+        }
+
+        function getCreaturePaint() {
+            return palettes[state.theme].fg;
+        }
+
+        function spriteWidth(sprite, scale) {
+            return sprite[0].length * scale;
+        }
+
+        function spriteHeight(sprite, scale) {
+            return sprite.length * scale;
+        }
+
+        function drawSprite(sprite, x, y, scale, color) {
+            for (let row = 0; row < sprite.length; row += 1) {
+                for (let column = 0; column < sprite[row].length; column += 1) {
+                    const pixel = sprite[row][column];
+                    if (pixel !== "0") {
+                        context.fillStyle =
+                            typeof color === "string" ? color : color[pixel];
+                        context.fillRect(
+                            Math.round(x + column * scale),
+                            Math.round(y + row * scale),
+                            scale,
+                            scale,
+                        );
+                    }
+                }
+            }
+        }
+
+        function resize() {
+            const rect = canvas.getBoundingClientRect();
+            state.dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+            state.width = Math.max(1, rect.width);
+            state.height = Math.max(1, rect.height);
+            canvas.width = Math.floor(state.width * state.dpr);
+            canvas.height = Math.floor(state.height * state.dpr);
+            context.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+
+            const menu = document.querySelector(".site-header");
+            const menuRect = menu instanceof HTMLElement ? menu.getBoundingClientRect() : null;
+            state.uiBottom = menuRect ? menuRect.bottom : 110;
+            if (resetButton && menuRect) {
+                // Pin the reset button just below the header's bottom edge.
+                resetButton.style.top = `${menuRect.bottom - rect.top + 12}px`;
+            }
+            state.playerX = state.playerX || state.width / 2;
+            positionPlayer();
+            spawnCreatures();
+        }
+
+        function positionPlayer() {
+            const scale = state.width < 520 ? 4 : 5;
+            const sprite = getPlayerSprite();
+            state.playerWidth = spriteWidth(sprite, scale);
+            state.playerHeight = spriteHeight(sprite, scale);
+            state.playerY = Math.max(
+                state.uiBottom + 130,
+                state.height - (state.width < 520 ? 62 : 76),
+            );
+            state.playerX = Math.min(
+                state.width - state.playerWidth / 2 - 12,
+                Math.max(state.playerWidth / 2 + 12, state.playerX),
+            );
+        }
+
+        function spawnCreatures() {
+            const sprite = getCreatureSprite();
+            const scale = state.theme === "space" ? (state.width < 520 ? 3 : 4) : 2;
+            const width = spriteWidth(sprite, scale);
+            const height = spriteHeight(sprite, scale);
+            const columns =
+                state.width < 380 ? 3 : state.width < 560 ? 4 : state.width < 780 ? 6 : 8;
+            const rows = state.height < 540 ? 2 : state.height < 680 ? 3 : 4;
+            const maxRowColumns = columns + 1;
+            const maxFittingGapX =
+                maxRowColumns > 1 ? (state.width - width - 24) / (maxRowColumns - 1) : 96;
+            const gapX = Math.max(width + 6, Math.min(96, state.width / columns, maxFittingGapX));
+            const gapY = Math.max(height + 16, state.height < 620 ? 48 : 62);
+            const formationWidth = (maxRowColumns - 1) * gapX + width;
+            const startX = Math.max(18, (state.width - formationWidth) / 2);
+            const startY = Math.max(state.uiBottom + 28, state.height * 0.22);
+
+            state.creatures = [];
+            for (let row = 0; row < rows; row += 1) {
+                const rowColumns = columns + (row % 2 === 0 ? 1 : 0);
+                const rowWidth = (rowColumns - 1) * gapX + width;
+                const rowStartX = startX + (formationWidth - rowWidth) / 2;
+                for (let column = 0; column < rowColumns; column += 1) {
+                    state.creatures.push({
+                        baseX: rowStartX + column * gapX,
+                        baseY: startY + row * gapY,
+                        width,
+                        height,
+                        scale,
+                        phase: row * 0.75 + column * 0.2,
+                        alive: true,
+                    });
+                }
+            }
+            state.bullets = [];
+            state.particles = [];
+            state.won = false;
+            state.lost = false;
+            hideResult();
+            state.creatureDirection = 1;
+            state.creatureOffsetX = 0;
+            state.creatureOffsetY = 0;
+            state.creatureStepTimer = 0;
+        }
+
+        function startGame() {
+            state.started = true;
+            startPanel?.setAttribute("hidden", "");
+            resultPanel?.setAttribute("hidden", "");
+            spawnCreatures();
+        }
+
+        function resetToStart() {
+            state.started = false;
+            state.keys.clear();
+            hideResult();
+            startPanel?.removeAttribute("hidden");
+            positionPlayer();
+            spawnCreatures();
+        }
+
+        function applyTheme() {
+            const nextTheme = currentTheme();
+            if (nextTheme === state.theme) {
+                return;
+            }
+            state.theme = nextTheme;
+            positionPlayer();
+            spawnCreatures();
+        }
+
+        function shoot(now = performance.now()) {
+            if (!state.started) {
+                return;
+            }
+            if (state.won || state.lost) {
+                return;
+            }
+            if (now - state.lastShotAt < 150) {
+                return;
+            }
+            state.lastShotAt = now;
+            state.bullets.push({
+                x: state.playerX,
+                y: state.playerY - 10,
+                width: 4,
+                height: 14,
+                speed: state.theme === "space" ? 650 : 600,
+            });
+        }
+
+        function creaturePosition(creature) {
+            return {
+                x: creature.baseX + state.creatureOffsetX,
+                y: creature.baseY + state.creatureOffsetY,
+            };
+        }
+
+        function creatureSpeedMultiplier(aliveCount) {
+            const killedCount = state.creatures.length - aliveCount;
+            const speedLevel = Math.floor(killedCount / 10);
+
+            return Math.min(2.2, 1 + speedLevel * 0.25);
+        }
+
+        function creatureStepSize(aliveCreatures, margin) {
+            const left = Math.min(...aliveCreatures.map((creature) => creature.baseX));
+            const right = Math.max(
+                ...aliveCreatures.map((creature) => creature.baseX + creature.width),
+            );
+            const formationWidth = right - left;
+            const travelWidth = Math.max(1, state.width - margin * 2 - formationWidth);
+            const stepsToCross = 10;
+
+            return Math.max(6, travelWidth / stepsToCross);
+        }
+
+        function updateCreatureFormation(dt) {
+            if (state.won || state.lost) {
+                return;
+            }
+
+            const aliveCreatures = state.creatures.filter((creature) => creature.alive);
+            if (aliveCreatures.length === 0) {
+                return;
+            }
+
+            state.creatureStepTimer += dt;
+            const baseInterval = state.theme === "space" ? 0.34 : 0.4;
+            const interval = baseInterval / creatureSpeedMultiplier(aliveCreatures.length);
+            if (state.creatureStepTimer < interval) {
+                return;
+            }
+            state.creatureStepTimer %= interval;
+
+            const margin = 0;
+            const stepX = creatureStepSize(aliveCreatures, margin);
+            // Drop a fixed fraction of the playable height each sweep so the
+            // formation reaches the bottom in the same number of sweeps on any
+            // page height instead of taking far longer on tall pages.
+            const sweepsToBottom = 12;
+            const playableHeight = Math.max(1, state.height - state.uiBottom);
+            const dropY = Math.max(18, playableHeight / sweepsToBottom);
+            const left = Math.min(
+                ...aliveCreatures.map((creature) => creature.baseX + state.creatureOffsetX),
+            );
+            const right = Math.max(
+                ...aliveCreatures.map(
+                    (creature) => creature.baseX + state.creatureOffsetX + creature.width,
+                ),
+            );
+            const nextLeft = left + state.creatureDirection * stepX;
+            const nextRight = right + state.creatureDirection * stepX;
+
+            if (nextRight >= state.width - margin) {
+                state.creatureOffsetX += state.width - margin - right;
+                state.creatureOffsetY += dropY;
+                state.creatureDirection *= -1;
+                return;
+            }
+
+            if (nextLeft <= margin) {
+                state.creatureOffsetX += margin - left;
+                state.creatureOffsetY += dropY;
+                state.creatureDirection *= -1;
+                return;
+            }
+
+            state.creatureOffsetX += state.creatureDirection * stepX;
+        }
+
+        function intersects(a, b) {
+            return (
+                a.x < b.x + b.width &&
+                a.x + a.width > b.x &&
+                a.y < b.y + b.height &&
+                a.y + a.height > b.y
+            );
+        }
+
+        function randomFireworkOrigin() {
+            const margin = state.width < 520 ? 28 : 44;
+            const top = state.uiBottom + margin;
+            const bottom = Math.max(top + 1, state.height - margin);
+
+            return {
+                x: margin + Math.random() * Math.max(1, state.width - margin * 2),
+                y: top + Math.random() * (bottom - top),
+            };
+        }
+
+        function emitFirework(origin = randomFireworkOrigin()) {
+            const palette = palettes[state.theme];
+            const colors = [
+                palette.fg,
+                palette.alt,
+                palette.danger,
+                state.theme === "space" ? "#f0fdf4" : "#111827",
+            ];
+            for (let index = 0; index < 26; index += 1) {
+                const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.35;
+                const speed = 220 + Math.random() * 260;
+                state.particles.push({
+                    x: origin.x,
+                    y: origin.y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    life: 1.15 + Math.random() * 0.55,
+                    age: 0,
+                    size: Math.random() > 0.55 ? 5 : 4,
+                    color: colors[index % colors.length],
+                });
+            }
+        }
+
+        function celebrate() {
+            state.won = true;
+            showResult("CLEAR");
+            for (let index = 0; index < 5; index += 1) {
+                emitFirework();
+            }
+        }
+
+        function fail() {
+            state.lost = true;
+            state.bullets = [];
+            showResult(failureMessage());
+        }
+
+        function failureMessage() {
+            return state.theme === "space" ? "INVADED" : "CONSUMED";
+        }
+
+        function showResult(message) {
+            resultPanel?.removeAttribute("hidden");
+            if (resultText) {
+                resultText.textContent = message;
+            }
+        }
+
+        function hideResult() {
+            resultPanel?.setAttribute("hidden", "");
+        }
+
+        function update(dt, now) {
+            if (!state.started) {
+                return;
+            }
+
+            if (state.lost) {
+                return;
+            }
+
+            const direction =
+                (state.keys.has("ArrowRight") ? 1 : 0) -
+                (state.keys.has("ArrowLeft") ? 1 : 0);
+            if (direction !== 0) {
+                state.playerX += direction * (state.width < 520 ? 420 : 520) * dt;
+            }
+            positionPlayer();
+
+            state.bullets = state.bullets
+                .map((bullet) => ({ ...bullet, y: bullet.y - bullet.speed * dt }))
+                .filter((bullet) => bullet.y + bullet.height > 0);
+
+            updateCreatureFormation(dt);
+
+            const playerTarget = {
+                x: state.playerX - state.playerWidth / 2,
+                y: state.playerY,
+                width: state.playerWidth,
+                height: state.playerHeight,
+            };
+            for (const creature of state.creatures) {
+                if (!creature.alive) {
+                    continue;
+                }
+                const position = creaturePosition(creature);
+                const target = {
+                    x: position.x,
+                    y: position.y,
+                    width: creature.width,
+                    height: creature.height,
+                };
+                // Fail once a creature descends to the player's plane, where it
+                // can no longer be shot, even if it doesn't directly collide.
+                if (
+                    position.y + creature.height >= state.playerY ||
+                    intersects(playerTarget, target)
+                ) {
+                    fail();
+                    return;
+                }
+            }
+
+            for (const bullet of state.bullets) {
+                for (const creature of state.creatures) {
+                    if (!creature.alive) {
+                        continue;
+                    }
+                    const position = creaturePosition(creature);
+                    const target = {
+                        x: position.x,
+                        y: position.y,
+                        width: creature.width,
+                        height: creature.height,
+                    };
+                    if (intersects(bullet, target)) {
+                        creature.alive = false;
+                        bullet.y = -100;
+                        break;
+                    }
+                }
+            }
+            state.bullets = state.bullets.filter((bullet) => bullet.y > -50);
+
+            if (
+                !state.won &&
+                state.creatures.length > 0 &&
+                state.creatures.every((creature) => !creature.alive)
+            ) {
+                celebrate();
+            }
+
+            if (state.won && Math.random() < 0.09) {
+                emitFirework();
+            }
+
+            for (const particle of state.particles) {
+                particle.age += dt;
+                particle.x += particle.vx * dt;
+                particle.y += particle.vy * dt;
+                particle.vy += 520 * dt;
+            }
+            state.particles = state.particles.filter(
+                (particle) => particle.age < particle.life && particle.y < state.height + 20,
+            );
+        }
+
+        function drawBackground(now) {
+            const palette = palettes[state.theme];
+            context.fillStyle = palette.bg;
+            context.fillRect(0, 0, state.width, state.height);
+
+            context.fillStyle = palette.panel;
+            const gridSize = state.theme === "space" ? 28 : 32;
+            for (let x = 0; x < state.width; x += gridSize) {
+                context.fillRect(x, state.uiBottom, 2, state.height - state.uiBottom);
+            }
+            for (let y = state.uiBottom + gridSize; y < state.height; y += gridSize) {
+                context.fillRect(0, y, state.width, 2);
+            }
+
+            if (state.theme === "space") {
+                context.fillStyle = "rgba(245, 245, 245, 0.72)";
+                const starCount = Math.floor(state.width / 18);
+                for (let index = 0; index < starCount; index += 1) {
+                    const x = (index * 83 + Math.floor(now / 80)) % state.width;
+                    const y = state.uiBottom + ((index * 47) % Math.max(1, state.height - state.uiBottom));
+                    context.fillRect(x, y, 2, 2);
+                }
+            }
+        }
+
+        function draw(now) {
+            const palette = palettes[state.theme];
+            drawBackground(now);
+
+            const creatureSprite = getCreatureSprite();
+            for (const creature of state.creatures) {
+                if (!creature.alive) {
+                    continue;
+                }
+                const position = creaturePosition(creature);
+                drawSprite(
+                    creatureSprite,
+                    position.x,
+                    position.y,
+                    creature.scale,
+                    getCreaturePaint(),
+                );
+            }
+
+            context.fillStyle = palette.alt;
+            for (const bullet of state.bullets) {
+                context.fillRect(
+                    Math.round(bullet.x - bullet.width / 2),
+                    Math.round(bullet.y),
+                    bullet.width,
+                    bullet.height,
+                );
+            }
+
+            const playerSprite = getPlayerSprite();
+            const playerScale = state.width < 520 ? 4 : 5;
+            drawSprite(
+                playerSprite,
+                state.playerX - state.playerWidth / 2,
+                state.playerY,
+                playerScale,
+                palette.fg,
+            );
+
+            for (const particle of state.particles) {
+                const alpha = Math.max(0, 1 - particle.age / particle.life);
+                context.globalAlpha = alpha;
+                context.fillStyle = particle.color;
+                context.fillRect(
+                    Math.round(particle.x),
+                    Math.round(particle.y),
+                    particle.size,
+                    particle.size,
+                );
+            }
+            context.globalAlpha = 1;
+
+        }
+
+        function frame(now) {
+            if (!state.lastFrameAt) {
+                state.lastFrameAt = now;
+            }
+            const dt = Math.min(0.033, (now - state.lastFrameAt) / 1000);
+            state.lastFrameAt = now;
+            applyTheme();
+            update(dt, now);
+            draw(now);
+            requestAnimationFrame(frame);
+        }
+
+        function setPlayerFromPointer(event) {
+            const rect = canvas.getBoundingClientRect();
+            state.playerX = event.clientX - rect.left;
+            positionPlayer();
+        }
+
+        canvas.addEventListener("pointermove", setPlayerFromPointer);
+        canvas.addEventListener("pointerdown", (event) => {
+            canvas.setPointerCapture(event.pointerId);
+            setPlayerFromPointer(event);
+            shoot();
+        });
+
+        window.addEventListener("keydown", (event) => {
+            if (
+                event.code === "Space" ||
+                event.key === "ArrowLeft" ||
+                event.key === "ArrowRight"
+            ) {
+                event.preventDefault();
+            }
+            if (event.code === "Space") {
+                shoot();
+                return;
+            }
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+                state.keys.add(event.key);
+            }
+        });
+
+        window.addEventListener("keyup", (event) => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+                state.keys.delete(event.key);
+            }
+        });
+
+        window.addEventListener("resize", resize);
+        startButton?.addEventListener("click", startGame);
+        resetButton?.addEventListener("click", resetToStart);
+
+        const themeObserver = new MutationObserver(applyTheme);
+        themeObserver.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+
+        state.theme = currentTheme();
+        resize();
+        requestAnimationFrame(frame);
+    }
+</script>
