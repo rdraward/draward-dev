@@ -1,0 +1,233 @@
+---
+import type { CollectionEntry } from "astro:content";
+import GhostIcon from "../assets/icons/ghost.svg";
+
+interface Props {
+    links: CollectionEntry<"links">[];
+}
+
+const { links } = Astro.props;
+---
+
+<section class="stuff-posts" aria-label="Posts">
+    <div class="stuff-scroll">
+        <table class="stuff-table">
+            <thead>
+                <tr>
+                    <th class="stuff-post-heading">Post</th>
+                    <th class="stuff-type-heading">Type</th>
+                    <th class="stuff-date-heading">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    links.map((item) => (
+                        <tr class="stuff-row">
+                            <td class="stuff-post-cell">
+                                <a
+                                    class="stuff-post-title"
+                                    href={item.data.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {item.data.title}
+                                </a>
+                                {item.data.ghost && (
+                                    <GhostIcon class="stuff-ghost ghost-float" />
+                                )}
+                            </td>
+                            <td class="stuff-type-cell">
+                                <span>{item.data.type}</span>
+                            </td>
+                            <td class="stuff-date-cell">
+                                <span>{item.data.date}</span>
+                            </td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<style>
+    .stuff-posts {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        border: 3px solid var(--dinosaur-color);
+        background: rgba(244, 239, 226, 0.9);
+        box-shadow: 0 7px 0 rgba(210, 4, 45, 0.14);
+    }
+
+    :global(.dark) .stuff-posts {
+        border-color: var(--space-invader-color);
+        background: rgba(8, 13, 21, 0.9);
+        box-shadow: 0 7px 0 rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-scroll {
+        height: 100%;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .stuff-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .stuff-table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+
+    .stuff-table thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        color: var(--dinosaur-color);
+        background: rgb(244 239 226);
+        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.2);
+    }
+
+    :global(.dark) .stuff-table thead {
+        color: var(--space-invader-color);
+        background: rgb(8 13 21);
+        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.18);
+    }
+
+    .stuff-post-heading,
+    .stuff-type-heading,
+    .stuff-date-heading {
+        padding: 0.95rem 1rem;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .stuff-post-heading {
+        width: 60%;
+        text-align: left;
+    }
+
+    .stuff-type-heading,
+    .stuff-date-heading {
+        width: 20%;
+        text-align: center;
+    }
+
+    .stuff-row {
+        position: relative;
+        border-bottom: 1px solid rgba(210, 4, 45, 0.2);
+        transition:
+            background-color 160ms ease,
+            color 160ms ease;
+    }
+
+    .stuff-row:hover,
+    .stuff-row:focus-within {
+        background: rgba(210, 4, 45, 0.1);
+    }
+
+    :global(.dark) .stuff-row {
+        border-bottom-color: rgba(163, 230, 53, 0.2);
+    }
+
+    :global(.dark) .stuff-row:hover,
+    :global(.dark) .stuff-row:focus-within {
+        background: rgba(163, 230, 53, 0.12);
+    }
+
+    .stuff-post-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .stuff-post-title {
+        flex: 1;
+        min-width: 0;
+        font-weight: 700;
+        color: inherit;
+        text-decoration: none;
+        word-break: break-word;
+    }
+
+    /* Stretch the link over the whole row so a click anywhere in the row
+       navigates, while keeping a real, focusable anchor for keyboard and
+       screen-reader users. */
+    .stuff-post-title::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+
+    .stuff-post-title:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: -2px;
+    }
+
+    .stuff-ghost {
+        position: relative;
+        flex-shrink: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        opacity: 0.7;
+    }
+
+    .stuff-type-cell,
+    .stuff-date-cell {
+        padding: 0.85rem 0.65rem;
+        color: rgb(71 85 105);
+        font-size: 0.85rem;
+        text-align: center;
+    }
+
+    :global(.dark) .stuff-type-cell,
+    :global(.dark) .stuff-date-cell {
+        color: rgb(203 213 225);
+    }
+
+    @media (max-width: 760px) {
+        .stuff-posts {
+            overflow: visible;
+        }
+
+        .stuff-scroll {
+            overflow: visible;
+        }
+
+        .stuff-post-heading,
+        .stuff-date-heading {
+            padding: 0.75rem 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .stuff-type-heading,
+        .stuff-type-cell {
+            display: none;
+        }
+
+        .stuff-post-heading {
+            width: 68%;
+        }
+
+        .stuff-date-heading {
+            width: 32%;
+        }
+
+        .stuff-post-cell {
+            padding: 0.75rem 0.6rem;
+        }
+
+        .stuff-post-title {
+            font-size: 0.9rem;
+        }
+
+        .stuff-date-cell {
+            padding: 0.75rem 0.45rem;
+            font-size: 0.75rem;
+        }
+    }
+</style>

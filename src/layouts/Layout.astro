@@ -13,9 +13,7 @@ import SpaceInvaderIcon from "../assets/icons/space-invader.svg";
         <meta name="generator" content={Astro.generator} />
         <title>Riley Draward</title>
     </head>
-    <body
-        class="bg-stone-200 dark:bg-slate-800 text-slate-900 dark:text-neutral-100 font-body transition-colors"
-    >
+    <body>
         <div
             id="theme-switcher"
             class="theme-switcher"
@@ -29,7 +27,7 @@ import SpaceInvaderIcon from "../assets/icons/space-invader.svg";
                 aria-label="Dinosaur theme"
                 aria-pressed="false"
             >
-                <DinosaurIcon class="block h-5 w-5" />
+                <DinosaurIcon class="theme-icon" />
             </button>
             <button
                 class="theme-option theme-option-invader"
@@ -38,7 +36,7 @@ import SpaceInvaderIcon from "../assets/icons/space-invader.svg";
                 aria-label="Space invader theme"
                 aria-pressed="false"
             >
-                <SpaceInvaderIcon class="block h-5 w-5" />
+                <SpaceInvaderIcon class="theme-icon" />
             </button>
         </div>
 
@@ -95,6 +93,11 @@ import SpaceInvaderIcon from "../assets/icons/space-invader.svg";
                 color: var(--dinosaur-color);
                 background: rgba(210, 4, 45, 0.14);
                 opacity: 1;
+            }
+
+            .theme-icon {
+                width: 1.25rem;
+                height: 1.25rem;
             }
 
             :global(.dark) .theme-option {

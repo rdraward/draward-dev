@@ -1,4 +1,5 @@
 ---
+import ArcadeControls from "./ArcadeControls.astro";
 import Header from "./Header.astro";
 import SocialLink from "./SocialLink.astro";
 import SocialLinks from "./SocialLinks.astro";
@@ -12,15 +13,7 @@ import BlogIcon from "../assets/icons/blog.svg";
         aria-label="Playable arcade game"
     ></canvas>
 
-    <div id="arcade-start-panel" class="arcade-start-panel">
-        <button id="arcade-start" class="arcade-start" type="button">
-            START
-        </button>
-    </div>
-
-    <div id="arcade-result-panel" class="arcade-result-panel" hidden>
-        <div id="arcade-result" class="arcade-result" role="status" aria-live="polite"></div>
-    </div>
+    <ArcadeControls />
 
     <Header subtext="Software engineer & developer advocate">
         <SocialLinks>
@@ -29,14 +22,6 @@ import BlogIcon from "../assets/icons/blog.svg";
             </SocialLink>
         </SocialLinks>
     </Header>
-
-    <button
-        id="arcade-reset"
-        class="arcade-reset"
-        type="button"
-    >
-        RESET
-    </button>
 
 </main>
 
@@ -72,127 +57,6 @@ import BlogIcon from "../assets/icons/blog.svg";
         cursor: crosshair;
     }
 
-    .arcade-start-panel,
-    .arcade-result-panel {
-        position: absolute;
-        inset: 0;
-        z-index: 3;
-        display: grid;
-        place-items: center;
-        pointer-events: none;
-    }
-
-    .arcade-start-panel[hidden],
-    .arcade-result-panel[hidden] {
-        display: none;
-    }
-
-    .arcade-start,
-    .arcade-result {
-        min-width: 10rem;
-        padding: 0.85rem 1.35rem;
-        color: var(--dinosaur-color);
-        font-size: 1.5rem;
-        line-height: 1;
-        border: 3px solid currentColor;
-        background: rgba(244, 239, 226, 0.94);
-        box-shadow: 0 7px 0 rgba(210, 4, 45, 0.18);
-        text-align: center;
-    }
-
-    .arcade-start {
-        cursor: pointer;
-        pointer-events: auto;
-        transition:
-            transform 120ms ease,
-            background-color 160ms ease,
-            box-shadow 160ms ease;
-    }
-
-    .arcade-start:hover,
-    .arcade-start:focus-visible {
-        background: rgb(244, 239, 226);
-        box-shadow: 0 9px 0 rgba(210, 4, 45, 0.22);
-        outline: none;
-        transform: translateY(-2px);
-    }
-
-    .arcade-start:active {
-        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.2);
-        transform: translateY(3px);
-    }
-
-    .arcade-result {
-        pointer-events: none;
-    }
-
-    :global(.dark) .arcade-start,
-    :global(.dark) .arcade-result {
-        color: var(--space-invader-color);
-        background: rgba(8, 13, 21, 0.94);
-        box-shadow: 0 7px 0 rgba(163, 230, 53, 0.14);
-    }
-
-    :global(.dark) .arcade-start:hover,
-    :global(.dark) .arcade-start:focus-visible {
-        background: rgb(8, 13, 21);
-        box-shadow: 0 9px 0 rgba(163, 230, 53, 0.18);
-    }
-
-    :global(.dark) .arcade-start:active {
-        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.16);
-    }
-
-    /* Floats over the top-right of the canvas, just below the header. The
-       `top` value is a pre-paint fallback; resize() in the game script sets
-       it precisely from the header's measured height. */
-    .arcade-reset {
-        position: absolute;
-        top: 6.5rem;
-        right: 1rem;
-        z-index: 3;
-        display: inline-grid;
-        place-items: center;
-        box-sizing: border-box;
-        padding: 0.5rem 0.85rem;
-        color: var(--dinosaur-color);
-        border: 2px solid currentColor;
-        background: rgba(244, 239, 226, 0.94);
-        box-shadow: 0 4px 0 rgba(210, 4, 45, 0.16);
-        cursor: pointer;
-        transition:
-            background-color 160ms ease,
-            box-shadow 160ms ease,
-            transform 120ms ease;
-    }
-
-    .arcade-reset:hover,
-    .arcade-reset:focus-visible {
-        background: rgb(244, 239, 226);
-        box-shadow: 0 6px 0 rgba(210, 4, 45, 0.2);
-        outline: none;
-        transform: translateY(-1px);
-    }
-
-    :global(.dark) .arcade-reset {
-        color: var(--space-invader-color);
-        background: rgba(8, 13, 21, 0.94);
-        box-shadow: 0 4px 0 rgba(163, 230, 53, 0.14);
-    }
-
-    :global(.dark) .arcade-reset:hover,
-    :global(.dark) .arcade-reset:focus-visible {
-        background: rgb(8, 13, 21);
-        box-shadow: 0 6px 0 rgba(163, 230, 53, 0.18);
-    }
-
-    @media (max-width: 720px) {
-        .arcade-reset {
-            top: 9rem;
-            padding: 0.4rem 0.6rem;
-            font-size: 0.75rem;
-        }
-    }
 </style>
 
 <script>
