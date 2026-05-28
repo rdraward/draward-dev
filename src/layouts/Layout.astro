@@ -6,14 +6,12 @@ import Header from "../components/Header.astro";
 
 interface Props {
     ariaLabel?: string;
-    headerSubtext?: string;
     shellClass?: string;
     title?: string;
 }
 
 const {
     ariaLabel,
-    headerSubtext = "Software engineer & developer advocate",
     shellClass,
     title = "Riley Draward",
 } = Astro.props;
@@ -56,7 +54,7 @@ const {
         </div>
 
         <main class:list={[shellClass]} aria-label={ariaLabel}>
-            <Header subtext={headerSubtext}>
+            <Header>
                 <slot name="header-actions" />
                 <Fragment slot="page-nav">
                     <slot name="page-nav" />
