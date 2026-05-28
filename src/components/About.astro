@@ -16,11 +16,16 @@ import BlogIcon from "../assets/icons/blog.svg";
     <ArcadeControls />
 
     <Header subtext="Software engineer & developer advocate">
-        <SocialLinks>
-            <SocialLink href="/stuff" name="My stuff" target="_self">
-                <BlogIcon width={22} />
-            </SocialLink>
-        </SocialLinks>
+        <SocialLinks />
+        <SocialLink
+            slot="page-nav"
+            href="/stuff"
+            name="Blog posts & videos"
+            target="_self"
+            showLabel
+        >
+            <BlogIcon width={22} />
+        </SocialLink>
     </Header>
 
 </main>

@@ -3,24 +3,27 @@ interface Props {
     href: string;
     name: string;
     target?: string;
+    showLabel?: boolean;
 }
 
-const { href, name, target } = Astro.props;
+const { href, name, target, showLabel = false } = Astro.props;
 ---
 
 <a
-    class="social-link"
+    class:list={["social-link", showLabel && "social-link-labeled"]}
     href={href}
     target={target || "_blank"}
     aria-label={name}
 >
+    {showLabel && <span class="social-link-label type-control">{name}</span>}
     <slot />
 </a>
 
 <style>
     .social-link {
-        display: inline-grid;
-        place-items: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         width: 2.5rem;
         height: 2.5rem;
         color: var(--dinosaur-color);
@@ -29,6 +32,23 @@ const { href, name, target } = Astro.props;
         transition:
             background-color 160ms ease,
             box-shadow 160ms ease;
+    }
+
+    .social-link-labeled {
+        justify-content: flex-end;
+        gap: 0.45rem;
+        width: auto;
+        padding: 0 0.7rem;
+        white-space: nowrap;
+    }
+
+    .social-link-label {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .social-link :global(svg) {
+        flex: 0 0 auto;
     }
 
     .social-link:hover,
@@ -47,5 +67,11 @@ const { href, name, target } = Astro.props;
     :global(.dark) .social-link:focus-visible {
         background: rgba(163, 230, 53, 0.12);
         box-shadow: 0 3px 0 rgba(163, 230, 53, 0.12);
+    }
+
+    @media (max-width: 420px) {
+        .social-link-labeled {
+            padding: 0 0.55rem;
+        }
     }
 </style>
