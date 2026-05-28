@@ -1,37 +1,19 @@
 ---
-import Header from "./Header.astro";
 import PostsTable from "./PostsTable.astro";
-import SocialLink from "./SocialLink.astro";
-import SocialLinks from "./SocialLinks.astro";
 import VideoChannels from "./VideoChannels.astro";
-import HomeIcon from "../assets/icons/home.svg";
 import { getCollection } from "astro:content";
 
 const links = await getCollection("links");
 links.sort((linkA, linkB) => linkB.data.date.localeCompare(linkA.data.date));
 ---
 
-<main class="stuff-site">
-    <Header subtext="Blog posts & videos">
-        <SocialLinks />
-        <SocialLink
-            slot="page-nav"
-            href="/"
-            name="Home"
-            target="_self"
-            showLabel
-        >
-            <HomeIcon class="stuff-back-icon" />
-        </SocialLink>
-    </Header>
-    <div class="stuff-layout">
-        <VideoChannels />
-        <PostsTable links={links} />
-    </div>
-</main>
+<div class="stuff-layout">
+    <VideoChannels />
+    <PostsTable links={links} />
+</div>
 
 <style>
-    .stuff-site {
+    :global(.stuff-site) {
         --stuff-light-bg: #f4efe2;
         --stuff-dark-bg: #080d15;
         --stuff-light-line: rgba(210, 4, 45, 0.28);
@@ -47,18 +29,13 @@ links.sort((linkA, linkB) => linkB.data.date.localeCompare(linkA.data.date));
         background-size: 2rem 2rem;
     }
 
-    :global(.dark) .stuff-site {
+    :global(.dark .stuff-site) {
         color: rgb(245 245 245);
         background:
             linear-gradient(var(--stuff-dark-line) 1px, transparent 1px),
             linear-gradient(90deg, var(--stuff-dark-line) 1px, transparent 1px),
             var(--stuff-dark-bg);
         background-size: 2rem 2rem;
-    }
-
-    .stuff-back-icon {
-        width: 1.5rem;
-        height: 1.5rem;
     }
 
     .stuff-layout {
@@ -78,7 +55,7 @@ links.sort((linkA, linkB) => linkB.data.date.localeCompare(linkA.data.date));
     }
 
     @media (min-width: 761px) {
-        .stuff-site {
+        :global(.stuff-site) {
             height: 100dvh;
         }
     }

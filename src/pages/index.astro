@@ -1,8 +1,26 @@
 ---
 import About from "../components/About.astro";
 import Layout from "../layouts/Layout.astro";
+import SocialLink from "../components/SocialLink.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import BlogIcon from "../assets/icons/blog.svg";
 ---
 
-<Layout>
+<Layout
+    ariaLabel="Riley Draward arcade home"
+    headerSubtext="Software engineer & developer advocate"
+    shellClass="arcade-site"
+>
+    <SocialLinks slot="header-actions" />
+    <SocialLink
+        slot="page-nav"
+        href="/stuff"
+        name="Blog posts & videos"
+        target="_self"
+        showLabel
+    >
+        <BlogIcon width={22} />
+    </SocialLink>
+
     <About />
 </Layout>

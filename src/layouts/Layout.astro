@@ -2,6 +2,21 @@
 import "../styles/global.css";
 import DinosaurIcon from "../assets/icons/dinosaur.svg";
 import SpaceInvaderIcon from "../assets/icons/space-invader.svg";
+import Header from "../components/Header.astro";
+
+interface Props {
+    ariaLabel?: string;
+    headerSubtext?: string;
+    shellClass?: string;
+    title?: string;
+}
+
+const {
+    ariaLabel,
+    headerSubtext = "Software engineer & developer advocate",
+    shellClass,
+    title = "Riley Draward",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -11,7 +26,7 @@ import SpaceInvaderIcon from "../assets/icons/space-invader.svg";
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
-        <title>Riley Draward</title>
+        <title>{title}</title>
     </head>
     <body>
         <div
@@ -40,7 +55,16 @@ import SpaceInvaderIcon from "../assets/icons/space-invader.svg";
             </button>
         </div>
 
-        <slot />
+        <main class:list={[shellClass]} aria-label={ariaLabel}>
+            <Header subtext={headerSubtext}>
+                <slot name="header-actions" />
+                <Fragment slot="page-nav">
+                    <slot name="page-nav" />
+                </Fragment>
+            </Header>
+
+            <slot />
+        </main>
 
         <style>
             .theme-switcher {
