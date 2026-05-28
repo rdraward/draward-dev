@@ -1,32 +1,17 @@
 ---
 import ArcadeControls from "./ArcadeControls.astro";
-import Header from "./Header.astro";
-import SocialLink from "./SocialLink.astro";
-import SocialLinks from "./SocialLinks.astro";
-import BlogIcon from "../assets/icons/blog.svg";
 ---
 
-<main class="arcade-site" aria-label="Riley Draward arcade home">
-    <canvas
-        id="arcade-canvas"
-        class="arcade-canvas"
-        aria-label="Playable arcade game"
-    ></canvas>
+<canvas
+    id="arcade-canvas"
+    class="arcade-canvas"
+    aria-label="Playable arcade game"
+></canvas>
 
-    <ArcadeControls />
-
-    <Header subtext="Software engineer & developer advocate">
-        <SocialLinks>
-            <SocialLink href="/stuff" name="My stuff" target="_self">
-                <BlogIcon width={22} />
-            </SocialLink>
-        </SocialLinks>
-    </Header>
-
-</main>
+<ArcadeControls />
 
 <style>
-    .arcade-site {
+    :global(.arcade-site) {
         --game-space-bg: #080d15;
         --game-space-grid: rgba(163, 230, 53, 0.18);
         --game-dino-bg: #f4efe2;
@@ -42,7 +27,7 @@ import BlogIcon from "../assets/icons/blog.svg";
         z-index: 4;
     }
 
-    :global(.dark) .arcade-site {
+    :global(.dark .arcade-site) {
         color: rgb(245 245 245);
         background: var(--game-space-bg);
     }

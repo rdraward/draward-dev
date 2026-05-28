@@ -1,8 +1,26 @@
 ---
 import Content from "../components/Content.astro";
 import Layout from "../layouts/Layout.astro";
+import SocialLink from "../components/SocialLink.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import HomeIcon from "../assets/icons/home.svg";
 ---
 
-<Layout>
+<Layout
+    headerSubtext="Blog posts & videos"
+    shellClass="stuff-site"
+    title="Blog posts & videos | Riley Draward"
+>
+    <SocialLinks slot="header-actions" />
+    <SocialLink
+        slot="page-nav"
+        href="/"
+        name="Home"
+        target="_self"
+        showLabel
+    >
+        <HomeIcon width={24} height={24} />
+    </SocialLink>
+
     <Content />
 </Layout>

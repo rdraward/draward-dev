@@ -14,6 +14,9 @@ const { subtext } = Astro.props;
     <div class="site-actions">
         <slot />
     </div>
+    <div class="site-page-nav">
+        <slot name="page-nav" />
+    </div>
 </header>
 
 <style>
@@ -51,9 +54,7 @@ const { subtext } = Astro.props;
         margin: 0.45rem 0 0;
     }
 
-    /* Page-specific icons/buttons are slotted in here. The fixed height and
-       top offset mirror the theme switcher so slotted controls line up with
-       it vertically. */
+    /* Header actions line up with the fixed theme switcher. */
     .site-actions {
         --header-control-height: 2.875rem;
         display: flex;
@@ -63,6 +64,15 @@ const { subtext } = Astro.props;
         flex-shrink: 0;
         height: var(--header-control-height);
         margin-top: -0.3rem;
+    }
+
+    .site-page-nav {
+        position: absolute;
+        top: 3.85rem;
+        right: 0.5rem;
+        z-index: 3;
+        display: flex;
+        justify-content: flex-end;
     }
 
     @media (max-width: 720px) {
@@ -77,6 +87,13 @@ const { subtext } = Astro.props;
             justify-content: space-between;
             width: 100%;
             gap: 0.5rem;
+            margin-top: -0.2rem;
+        }
+
+        .site-page-nav {
+            position: static;
+            justify-content: flex-end;
+            width: 100%;
             margin-top: -0.2rem;
         }
     }

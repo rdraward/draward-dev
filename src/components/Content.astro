@@ -1,35 +1,19 @@
 ---
-import Header from "./Header.astro";
 import PostsTable from "./PostsTable.astro";
-import SocialLinks from "./SocialLinks.astro";
 import VideoChannels from "./VideoChannels.astro";
-import HomeIcon from "../assets/icons/home.svg";
 import { getCollection } from "astro:content";
 
 const links = await getCollection("links");
 links.sort((linkA, linkB) => linkB.data.date.localeCompare(linkA.data.date));
 ---
 
-<main class="stuff-site">
-    <Header subtext="Blog posts & videos">
-        <SocialLinks>
-            <a
-                href="/"
-                class="stuff-back-link"
-                aria-label="Go back home"
-            >
-                <HomeIcon class="stuff-back-icon" />
-            </a>
-        </SocialLinks>
-    </Header>
-    <div class="stuff-layout">
-        <VideoChannels />
-        <PostsTable links={links} />
-    </div>
-</main>
+<div class="stuff-layout">
+    <VideoChannels />
+    <PostsTable links={links} />
+</div>
 
 <style>
-    .stuff-site {
+    :global(.stuff-site) {
         --stuff-light-bg: #f4efe2;
         --stuff-dark-bg: #080d15;
         --stuff-light-line: rgba(210, 4, 45, 0.28);
@@ -45,50 +29,13 @@ links.sort((linkA, linkB) => linkB.data.date.localeCompare(linkA.data.date));
         background-size: 2rem 2rem;
     }
 
-    :global(.dark) .stuff-site {
+    :global(.dark .stuff-site) {
         color: rgb(245 245 245);
         background:
             linear-gradient(var(--stuff-dark-line) 1px, transparent 1px),
             linear-gradient(90deg, var(--stuff-dark-line) 1px, transparent 1px),
             var(--stuff-dark-bg);
         background-size: 2rem 2rem;
-    }
-
-    .stuff-back-link {
-        display: inline-grid;
-        place-items: center;
-        box-sizing: border-box;
-        width: 2.5rem;
-        height: 2.5rem;
-        color: var(--dinosaur-color);
-        border: 2px solid transparent;
-        background: transparent;
-        transition:
-            background-color 160ms ease,
-            box-shadow 160ms ease;
-    }
-
-    .stuff-back-link:hover,
-    .stuff-back-link:focus-visible {
-        border-color: currentColor;
-        background: rgba(210, 4, 45, 0.1);
-        box-shadow: 0 3px 0 rgba(210, 4, 45, 0.14);
-        outline: none;
-    }
-
-    :global(.dark) .stuff-back-link {
-        color: var(--space-invader-color);
-    }
-
-    :global(.dark) .stuff-back-link:hover,
-    :global(.dark) .stuff-back-link:focus-visible {
-        background: rgba(163, 230, 53, 0.12);
-        box-shadow: 0 3px 0 rgba(163, 230, 53, 0.12);
-    }
-
-    .stuff-back-icon {
-        width: 1.5rem;
-        height: 1.5rem;
     }
 
     .stuff-layout {
@@ -108,7 +55,7 @@ links.sort((linkA, linkB) => linkB.data.date.localeCompare(linkA.data.date));
     }
 
     @media (min-width: 761px) {
-        .stuff-site {
+        :global(.stuff-site) {
             height: 100dvh;
         }
     }
